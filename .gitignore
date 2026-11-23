@@ -1,0 +1,20 @@
+# IDE
+.idea/
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+.pytest_cache/
+
+# Generated data (copied from containers)
+parquet_data/
+data_dev/parquet_data/
+
+# Local test reports (the Jenkins-archived report lives in submission/)
+generated_report/
+html_report/
+
+# Drafts
+.github/skills/generate-parquet-dq-tests/test.md
