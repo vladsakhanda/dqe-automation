@@ -10,6 +10,19 @@
 
 All failures are explained by the Parquet transformation deviating from the mapping. No expected SQL was changed to make checks pass.
 
+**Jenkins job `dq_tests`, build #1** (status UNSTABLE): `8 failed, 7 passed, 5 deselected` — same failing tests as below.
+Source data grows daily, so absolute numbers in the build differ slightly from the local analysis below:
+
+| Test | Jenkins build #1 assertion |
+| --- | --- |
+| `facility_name_min…::test_check_count` | expected 35 719, actual 44 669 (+8 950) |
+| `facility_name_min…::test_check_uniqueness` | 8 950 duplicated keys (17 900 rows) on `facility_name`, `visit_date` |
+| `facility_type_avg…::test_check_count` | expected 35 719, actual 25 934 (−9 785) |
+| `patient_sum…::test_check_count` | expected 120, actual 64 (−56) |
+| `patient_sum…::test_check_not_null_values` | `full_name`: 4 nulls out of 64 rows |
+
+The detailed numbers below come from a local run against the same containers shortly before the build.
+
 ## Summary
 
 | # | Dataset | Failed tests | Defect | Severity |
