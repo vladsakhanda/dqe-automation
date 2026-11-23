@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title id="head-title">report.html</title>
+      <link href="assets/style.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <h1 id="title">report.html</h1>
+    <p>Report generated on 23-Nov-2026 at 14:38:41 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a>
+        v4.2.0</p>
+    <div id="environment-header">
+      <h2>Environment</h2>
+    </div>
+    <table id="environment"></table>
+    <!-- TEMPLATES -->
+      <template id="template_environment_row">
+      <tr>
+        <td></td>
+        <td></td>
+      </tr>
+    </template>
+    <template id="template_results-table__body--empty">
+      <tbody class="results-table-row">
+        <tr id="not-found-message">
+          <td colspan="4">No results found. Check the filters.</td>
+        </tr>
+      </tbody>
+    </template>
+    <template id="template_results-table__tbody">
+      <tbody class="results-table-row">
+        <tr class="collapsible">
+        </tr>
+        <tr class="extras-row">
+          <td class="extra" colspan="4">
+            <div class="extraHTML"></div>
+            <div class="media">
+              <div class="media-container">
+                  <div class="media-container__nav--left">&lt;</div>
+                  <div class="media-container__viewport">
+                    <img src="" />
+                    <video controls>
+                      <source src="" type="video/mp4">
+                    </video>
+                  </div>
+                  <div class="media-container__nav--right">&gt;</div>
+                </div>
+                <div class="media__name"></div>
+                <div class="media__counter"></div>
+            </div>
+            <div class="logwrapper">
+              <div class="logexpander"></div>
+              <div class="log"></div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </template>
+    <!-- END TEMPLATES -->
+    <div class="summary">
+      <div class="summary__data">
+        <h2>Summary</h2>
+        <div class="additional-summary prefix">
+        </div>
+        <p class="run-count">15 tests took 00:00:02.</p>
+        <p class="filter">(Un)check the boxes to filter the results.</p>
+        <div class="summary__reload">
+          <div class="summary__reload__button hidden" onclick="location.reload()">
+            <div>There are still tests running. <br />Reload this page to get the latest results!</div>
+          </div>
+        </div>
+        <div class="summary__spacer"></div>
+        <div class="controls">
+          <div class="filters">
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="failed" >
+            <span class="failed">8 Failed,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="passed" >
+            <span class="passed">7 Passed,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="skipped" disabled>
+            <span class="skipped">0 Skipped,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="xfailed" disabled>
+            <span class="xfailed">0 Expected failures,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="xpassed" disabled>
+            <span class="xpassed">0 Unexpected passes,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="error" disabled>
+            <span class="error">0 Errors,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="rerun" disabled>
+            <span class="rerun">0 Reruns</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="retried" disabled>
+            <span class="retried">0 Retried,</span>
+          </div>
+          <div class="collapse">
+            <button id="show_all_details">Show all details</button>&nbsp;/&nbsp;<button id="hide_all_details">Hide all details</button>
+          </div>
+        </div>
+      </div>
+      <div class="additional-summary summary">
+      </div>
+      <div class="additional-summary postfix">
+      </div>
+    </div>
+    <table id="results-table">
+      <thead id="results-table-head">
+        <tr>
+          <th class="sortable" data-column-type="result">Result</th>
+          <th class="sortable" data-column-type="testId">Test</th>
+          <th class="sortable" data-column-type="duration">Duration</th>
+          <th>Links</th>
+        </tr>
+      </thead>
+    </table>
+  <footer>
+    <div id="data-container" data-jsonblob="{&#34;environment&#34;: {&#34;Python&#34;: &#34;3.13.5&#34;, &#34;Platform&#34;: &#34;Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.41&#34;, &#34;Packages&#34;: {&#34;pytest&#34;: &#34;9.2.0&#34;, &#34;pluggy&#34;: &#34;1.7.0&#34;}, &#34;Plugins&#34;: {&#34;metadata&#34;: &#34;3.1.1&#34;, &#34;html&#34;: &#34;4.2.0&#34;}, &#34;CI&#34;: &#34;true&#34;, &#34;BUILD_NUMBER&#34;: &#34;1&#34;, &#34;BUILD_ID&#34;: &#34;1&#34;, &#34;BUILD_URL&#34;: &#34;http://localhost:8080/job/dq_tests/1/&#34;, &#34;NODE_NAME&#34;: &#34;built-in&#34;, &#34;JOB_NAME&#34;: &#34;dq_tests&#34;, &#34;BUILD_TAG&#34;: &#34;jenkins-dq_tests-1&#34;, &#34;EXECUTOR_NUMBER&#34;: &#34;0&#34;, &#34;JENKINS_URL&#34;: &#34;http://localhost:8080/&#34;, &#34;JAVA_HOME&#34;: &#34;/opt/java/openjdk&#34;, &#34;WORKSPACE&#34;: &#34;/var/jenkins_home/workspace/dq_tests&#34;, &#34;GIT_COMMIT&#34;: &#34;e2fff0bca7e8148d38ae0ee303965a33ac46276a&#34;, &#34;GIT_URL&#34;: &#34;https://github.com/vladsakhanda/dqe-automation&#34;, &#34;GIT_BRANCH&#34;: &#34;origin/main&#34;}, &#34;tests&#34;: {&#34;dq checks/parquet_files/test_facility_name_min_time_spent_per_visit_date.py::test_check_dataset_is_not_empty&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Passed&#34;, &#34;testId&#34;: &#34;dq checks/parquet_files/test_facility_name_min_time_spent_per_visit_date.py::test_check_dataset_is_not_empty&#34;, &#34;duration&#34;: &#34;429 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;dq checks/parquet_files/test_facility_name_min_time_spent_per_visit_date.py::test_check_dataset_is_not_empty&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;429 ms&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;No log output captured.&#34;}], &#34;dq checks/parquet_files/test_facility_name_min_time_spent_per_visit_date.py::test_check_data_completeness&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Failed&#34;, &#34;testId&#34;: &#34;dq checks/parquet_files/test_facility_name_min_time_spent_per_visit_date.py::test_check_data_completeness&#34;, &#34;duration&#34;: &#34;327 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Failed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;dq checks/parquet_files/test_facility_name_min_time_spent_per_visit_date.py::test_check_data_completeness&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;327 ms&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;source_data =                  facility_name  visit_date  min_time_spent\n0            Anderson-Phillips  2000-01-01              33\n... Wiley  2026-11-20              15\n35718  Wilson, Meyer and Wiley  2026-11-22              31\n\n[35719 rows x 3 columns]\ntarget_data =            facility_name visit_date  min_time_spent\n0      Anderson-Phillips 2000-01-01              33\n1      Anderso...scobar-Kennedy 2026-11-04              28\n44668    Escobar-Kennedy 2026-11-08              35\n\n[44669 rows x 3 columns]\ndata_quality_library = &amp;lt;src.data_quality.data_quality_validation_library.DataQualityLibrary object at 0x7b9214deef90&amp;gt;\n\n    @pytest.mark.parquet_data\n    @pytest.mark.facility_name_min_time_spent_per_visit_date\n    def test_check_data_completeness(source_data, target_data, data_quality_library):\n&amp;gt;       data_quality_library.check_data_completeness(source_data, target_data)\n\ntests/dq checks/parquet_files/test_facility_name_min_time_spent_per_visit_date.py:43: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\ndf_expected =                  facility_name  visit_date  min_time_spent\n0            Anderson-Phillips  2000-01-01              33\n... Wiley  2026-11-20              15\n35718  Wilson, Meyer and Wiley  2026-11-22              31\n\n[35719 rows x 3 columns]\ndf_actual =            facility_name visit_date  min_time_spent\n0      Anderson-Phillips 2000-01-01              33\n1      Anderso...scobar-Kennedy 2026-11-04              28\n44668    Escobar-Kennedy 2026-11-08              35\n\n[44669 rows x 3 columns]\n\n    @staticmethod\n    def check_data_completeness(df_expected: pd.DataFrame, df_actual: pd.DataFrame):\n        &amp;quot;&amp;quot;&amp;quot;\n        Full data set comparison, row order ignored, duplicates respected.\n        Fails on column set mismatch or any row present on one side only.\n        &amp;quot;&amp;quot;&amp;quot;\n        expected_cols, actual_cols = set(df_expected.columns), set(df_actual.columns)\n        assert expected_cols == actual_cols, (\n            &amp;quot;Column set mismatch.\\n&amp;quot;\n            f&amp;quot;Missing in target: {sorted(expected_cols - actual_cols)}\\n&amp;quot;\n            f&amp;quot;Unexpected in target: {sorted(actual_cols - expected_cols)}&amp;quot;\n        )\n    \n        columns = sorted(expected_cols)\n        expected = DataQualityLibrary._normalize(df_expected[columns])\n        actual = DataQualityLibrary._normalize(df_actual[columns])\n    \n        # Number each occurrence of identical rows so duplicates are compared as well.\n        key = &amp;quot;__occurrence__&amp;quot;\n        expected[key] = expected.groupby(columns, dropna=False).cumcount()\n        actual[key] = actual.groupby(columns, dropna=False).cumcount()\n    \n        merged = expected.merge(actual, on=columns + [key], how=&amp;quot;outer&amp;quot;, indicator=True)\n        only_expected = merged[merged[&amp;quot;_merge&amp;quot;] == &amp;quot;left_only&amp;quot;][columns]\n        only_actual = merged[merged[&amp;quot;_merge&amp;quot;] == &amp;quot;right_only&amp;quot;][columns]\n    \n        if only_expected.empty and only_actual.empty:\n            return\n    \n        message = [\n            &amp;quot;Data completeness check failed: source (expected) and target (actual) differ.&amp;quot;,\n            f&amp;quot;Expected rows: {len(df_expected)}, actual rows: {len(df_actual)}&amp;quot;,\n            f&amp;quot;Rows missing in target (present only in source): {len(only_expected)}&amp;quot;,\n            f&amp;quot;Rows unexpected in target (present only in target): {len(only_actual)}&amp;quot;,\n        ]\n        if not only_expected.empty:\n            message += [&amp;quot;&amp;quot;, &amp;quot;--- Missing in target ---&amp;quot;,\n                        DataQualityLibrary._to_text(only_expected.sort_values(columns))]\n        if not only_actual.empty:\n            message += [&amp;quot;&amp;quot;, &amp;quot;--- Unexpected in target ---&amp;quot;,\n                        DataQualityLibrary._to_text(only_actual.sort_values(columns))]\n&amp;gt;       raise AssertionError(&amp;quot;\\n&amp;quot;.join(message))\nE       AssertionError: Data completeness check failed: source (expected) and target (actual) differ.\nE       Expected rows: 35719, actual rows: 44669\nE       Rows missing in target (present only in source): 0\nE       Rows unexpected in target (present only in target): 8950\nE       \nE       --- Unexpected in target ---\nE         facility_name min_time_spent visit_date\nE       Escobar-Kennedy           15.0 2000-02-11\nE       Escobar-Kennedy           15.0 2000-04-06\nE       Escobar-Kennedy           15.0 2000-04-20\nE       Escobar-Kennedy           15.0 2000-04-24\nE       Escobar-Kennedy           15.0 2000-04-29\nE       Escobar-Kennedy           15.0 2000-06-02\nE       Escobar-Kennedy           15.0 2000-06-08\nE       Escobar-Kennedy           15.0 2000-06-30\nE       Escobar-Kennedy           15.0 2000-07-21\nE       Escobar-Kennedy           15.0 2000-08-03\nE       Escobar-Kennedy           15.0 2000-08-15\nE       Escobar-Kennedy           15.0 2000-09-10\nE       Escobar-Kennedy           15.0 2000-11-06\nE       Escobar-Kennedy           15.0 2000-12-04\nE       Escobar-Kennedy           15.0 2000-12-26\nE       Escobar-Kennedy           15.0 2001-01-13\nE       Escobar-Kennedy           15.0 2001-01-19\nE       Escobar-Kennedy           15.0 2001-01-30\nE       Escobar-Kennedy           15.0 2001-02-08\nE       Escobar-Kennedy           15.0 2001-03-06\nE       ... (8930 more rows)\n\nsrc/data_quality/data_quality_validation_library.py:111: AssertionError\n&#34;}], &#34;dq checks/parquet_files/test_facility_name_min_time_spent_per_visit_date.py::test_check_count&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Failed&#34;, &#34;testId&#34;: &#34;dq checks/parquet_files/test_facility_name_min_time_spent_per_visit_date.py::test_check_count&#34;, &#34;duration&#34;: &#34;0 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Failed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;dq checks/parquet_files/test_facility_name_min_time_spent_per_visit_date.py::test_check_count&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;0 ms&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;source_data =                  facility_name  visit_date  min_time_spent\n0            Anderson-Phillips  2000-01-01              33\n... Wiley  2026-11-20              15\n35718  Wilson, Meyer and Wiley  2026-11-22              31\n\n[35719 rows x 3 columns]\ntarget_data =            facility_name visit_date  min_time_spent\n0      Anderson-Phillips 2000-01-01              33\n1      Anderso...scobar-Kennedy 2026-11-04              28\n44668    Escobar-Kennedy 2026-11-08              35\n\n[44669 rows x 3 columns]\ndata_quality_library = &amp;lt;src.data_quality.data_quality_validation_library.DataQualityLibrary object at 0x7b9214deef90&amp;gt;\n\n    @pytest.mark.parquet_data\n    @pytest.mark.facility_name_min_time_spent_per_visit_date\n    def test_check_count(source_data, target_data, data_quality_library):\n&amp;gt;       data_quality_library.check_count(source_data, target_data)\n\ntests/dq checks/parquet_files/test_facility_name_min_time_spent_per_visit_date.py:49: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\ndf_expected =                  facility_name  visit_date  min_time_spent\n0            Anderson-Phillips  2000-01-01              33\n... Wiley  2026-11-20              15\n35718  Wilson, Meyer and Wiley  2026-11-22              31\n\n[35719 rows x 3 columns]\ndf_actual =            facility_name visit_date  min_time_spent\n0      Anderson-Phillips 2000-01-01              33\n1      Anderso...scobar-Kennedy 2026-11-04              28\n44668    Escobar-Kennedy 2026-11-08              35\n\n[44669 rows x 3 columns]\n\n    @staticmethod\n    def check_count(df_expected: pd.DataFrame, df_actual: pd.DataFrame):\n        expected, actual = len(df_expected), len(df_actual)\n&amp;gt;       assert expected == actual, (\n               ^^^^^^^^^^^^^^^^^^\n            f&amp;quot;Row count mismatch: expected (source) = {expected}, actual (target) = {actual}, &amp;quot;\n            f&amp;quot;difference = {actual - expected:+d}&amp;quot;\n        )\nE       AssertionError: Row count mismatch: expected (source) = 35719, actual (target) = 44669, difference = +8950\n\nsrc/data_quality/data_quality_validation_library.py:65: AssertionError\n&#34;}], &#34;dq checks/parquet_files/test_facility_name_min_time_spent_per_visit_date.py::test_check_uniqueness&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Failed&#34;, &#34;testId&#34;: &#34;dq checks/parquet_files/test_facility_name_min_time_spent_per_visit_date.py::test_check_uniqueness&#34;, &#34;duration&#34;: &#34;7 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Failed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;dq checks/parquet_files/test_facility_name_min_time_spent_per_visit_date.py::test_check_uniqueness&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;7 ms&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;target_data =            facility_name visit_date  min_time_spent\n0      Anderson-Phillips 2000-01-01              33\n1      Anderso...scobar-Kennedy 2026-11-04              28\n44668    Escobar-Kennedy 2026-11-08              35\n\n[44669 rows x 3 columns]\ndata_quality_library = &amp;lt;src.data_quality.data_quality_validation_library.DataQualityLibrary object at 0x7b9214deef90&amp;gt;\n\n    @pytest.mark.parquet_data\n    @pytest.mark.facility_name_min_time_spent_per_visit_date\n    def test_check_uniqueness(target_data, data_quality_library):\n&amp;gt;       data_quality_library.check_duplicates(target_data, [&amp;#x27;facility_name&amp;#x27;, &amp;#x27;visit_date&amp;#x27;])\n\ntests/dq checks/parquet_files/test_facility_name_min_time_spent_per_visit_date.py:55: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\ndf =            facility_name visit_date  min_time_spent\n0      Anderson-Phillips 2000-01-01              33\n1      Anderso...scobar-Kennedy 2026-11-04              28\n44668    Escobar-Kennedy 2026-11-08              35\n\n[44669 rows x 3 columns]\ncolumn_names = [&amp;#x27;facility_name&amp;#x27;, &amp;#x27;visit_date&amp;#x27;]\n\n    @staticmethod\n    def check_duplicates(df: pd.DataFrame, column_names=None):\n        subset = list(column_names) if column_names else list(df.columns)\n        missing = [c for c in subset if c not in df.columns]\n        assert not missing, f&amp;quot;Columns not found for duplicate check: {missing}&amp;quot;\n    \n        duplicated = df[df.duplicated(subset=subset, keep=False)]\n        if duplicated.empty:\n            return\n        groups = (duplicated.groupby(subset, dropna=False).size()\n                  .reset_index(name=&amp;quot;occurrences&amp;quot;).sort_values(&amp;quot;occurrences&amp;quot;, ascending=False))\n&amp;gt;       raise AssertionError(\n            f&amp;quot;Found {len(groups)} duplicated key(s) ({len(duplicated)} rows) on columns {subset}.\\n&amp;quot;\n            + DataQualityLibrary._to_text(groups)\n        )\nE       AssertionError: Found 8950 duplicated key(s) (17900 rows) on columns [&amp;#x27;facility_name&amp;#x27;, &amp;#x27;visit_date&amp;#x27;].\nE         facility_name visit_date  occurrences\nE       Escobar-Kennedy 2000-01-01            2\nE       Escobar-Kennedy 2000-01-02            2\nE       Escobar-Kennedy 2000-01-03            2\nE       Escobar-Kennedy 2000-01-04            2\nE       Escobar-Kennedy 2000-01-07            2\nE       Escobar-Kennedy 2000-01-08            2\nE       Escobar-Kennedy 2000-01-09            2\nE       Escobar-Kennedy 2000-01-10            2\nE       Escobar-Kennedy 2000-01-11            2\nE       Escobar-Kennedy 2000-01-12            2\nE       Escobar-Kennedy 2000-01-13            2\nE       Escobar-Kennedy 2000-01-14            2\nE       Escobar-Kennedy 2000-01-15            2\nE       Escobar-Kennedy 2000-01-16            2\nE       Escobar-Kennedy 2000-01-17            2\nE       Escobar-Kennedy 2000-01-18            2\nE       Escobar-Kennedy 2000-01-19            2\nE       Escobar-Kennedy 2000-01-20            2\nE       Escobar-Kennedy 2000-01-21            2\nE       Escobar-Kennedy 2000-01-22            2\nE       ... (8930 more rows)\n\nsrc/data_quality/data_quality_validation_library.py:127: AssertionError\n&#34;}], &#34;dq checks/parquet_files/test_facility_name_min_time_spent_per_visit_date.py::test_check_not_null_values&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Passed&#34;, &#34;testId&#34;: &#34;dq checks/parquet_files/test_facility_name_min_time_spent_per_visit_date.py::test_check_not_null_values&#34;, &#34;duration&#34;: &#34;0 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;dq checks/parquet_files/test_facility_name_min_time_spent_per_visit_date.py::test_check_not_null_values&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;0 ms&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;No log output captured.&#34;}], &#34;dq checks/parquet_files/test_facility_type_avg_time_spent_per_visit_date.py::test_check_dataset_is_not_empty&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Passed&#34;, &#34;testId&#34;: &#34;dq checks/parquet_files/test_facility_type_avg_time_spent_per_visit_date.py::test_check_dataset_is_not_empty&#34;, &#34;duration&#34;: &#34;407 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;dq checks/parquet_files/test_facility_type_avg_time_spent_per_visit_date.py::test_check_dataset_is_not_empty&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;407 ms&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;No log output captured.&#34;}], &#34;dq checks/parquet_files/test_facility_type_avg_time_spent_per_visit_date.py::test_check_data_completeness&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Failed&#34;, &#34;testId&#34;: &#34;dq checks/parquet_files/test_facility_type_avg_time_spent_per_visit_date.py::test_check_data_completeness&#34;, &#34;duration&#34;: &#34;240 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Failed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;dq checks/parquet_files/test_facility_type_avg_time_spent_per_visit_date.py::test_check_data_completeness&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;240 ms&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;source_data =       facility_type  visit_date avg_time_spent\n0            Clinic  2000-01-01          26.00\n1            Clinic  200...35717   Urgent Care  2026-11-22          48.00\n35718   Urgent Care  2026-11-23          30.00\n\n[35719 rows x 3 columns]\ntarget_data =           facility_type visit_date  avg_time_spent\n0                Clinic 2000-11-27           21.00\n1               ...         Clinic 2026-11-12           25.50\n25933  Specialty Center 2026-11-09           34.25\n\n[25934 rows x 3 columns]\ndata_quality_library = &amp;lt;src.data_quality.data_quality_validation_library.DataQualityLibrary object at 0x7b9214deef90&amp;gt;\n\n    @pytest.mark.parquet_data\n    @pytest.mark.facility_type_avg_time_spent_per_visit_date\n    def test_check_data_completeness(source_data, target_data, data_quality_library):\n&amp;gt;       data_quality_library.check_data_completeness(source_data, target_data)\n\ntests/dq checks/parquet_files/test_facility_type_avg_time_spent_per_visit_date.py:43: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\ndf_expected =       facility_type  visit_date avg_time_spent\n0            Clinic  2000-01-01          26.00\n1            Clinic  200...35717   Urgent Care  2026-11-22          48.00\n35718   Urgent Care  2026-11-23          30.00\n\n[35719 rows x 3 columns]\ndf_actual =           facility_type visit_date  avg_time_spent\n0                Clinic 2000-11-27           21.00\n1               ...         Clinic 2026-11-12           25.50\n25933  Specialty Center 2026-11-09           34.25\n\n[25934 rows x 3 columns]\n\n    @staticmethod\n    def check_data_completeness(df_expected: pd.DataFrame, df_actual: pd.DataFrame):\n        &amp;quot;&amp;quot;&amp;quot;\n        Full data set comparison, row order ignored, duplicates respected.\n        Fails on column set mismatch or any row present on one side only.\n        &amp;quot;&amp;quot;&amp;quot;\n        expected_cols, actual_cols = set(df_expected.columns), set(df_actual.columns)\n        assert expected_cols == actual_cols, (\n            &amp;quot;Column set mismatch.\\n&amp;quot;\n            f&amp;quot;Missing in target: {sorted(expected_cols - actual_cols)}\\n&amp;quot;\n            f&amp;quot;Unexpected in target: {sorted(actual_cols - expected_cols)}&amp;quot;\n        )\n    \n        columns = sorted(expected_cols)\n        expected = DataQualityLibrary._normalize(df_expected[columns])\n        actual = DataQualityLibrary._normalize(df_actual[columns])\n    \n        # Number each occurrence of identical rows so duplicates are compared as well.\n        key = &amp;quot;__occurrence__&amp;quot;\n        expected[key] = expected.groupby(columns, dropna=False).cumcount()\n        actual[key] = actual.groupby(columns, dropna=False).cumcount()\n    \n        merged = expected.merge(actual, on=columns + [key], how=&amp;quot;outer&amp;quot;, indicator=True)\n        only_expected = merged[merged[&amp;quot;_merge&amp;quot;] == &amp;quot;left_only&amp;quot;][columns]\n        only_actual = merged[merged[&amp;quot;_merge&amp;quot;] == &amp;quot;right_only&amp;quot;][columns]\n    \n        if only_expected.empty and only_actual.empty:\n            return\n    \n        message = [\n            &amp;quot;Data completeness check failed: source (expected) and target (actual) differ.&amp;quot;,\n            f&amp;quot;Expected rows: {len(df_expected)}, actual rows: {len(df_actual)}&amp;quot;,\n            f&amp;quot;Rows missing in target (present only in source): {len(only_expected)}&amp;quot;,\n            f&amp;quot;Rows unexpected in target (present only in target): {len(only_actual)}&amp;quot;,\n        ]\n        if not only_expected.empty:\n            message += [&amp;quot;&amp;quot;, &amp;quot;--- Missing in target ---&amp;quot;,\n                        DataQualityLibrary._to_text(only_expected.sort_values(columns))]\n        if not only_actual.empty:\n            message += [&amp;quot;&amp;quot;, &amp;quot;--- Unexpected in target ---&amp;quot;,\n                        DataQualityLibrary._to_text(only_actual.sort_values(columns))]\n&amp;gt;       raise AssertionError(&amp;quot;\\n&amp;quot;.join(message))\nE       AssertionError: Data completeness check failed: source (expected) and target (actual) differ.\nE       Expected rows: 35719, actual rows: 25934\nE       Rows missing in target (present only in source): 9785\nE       Rows unexpected in target (present only in target): 0\nE       \nE       --- Missing in target ---\nE       avg_time_spent    facility_type visit_date\nE                 15.0           Clinic 2000-02-11\nE                 15.0           Clinic 2000-08-03\nE                 15.0           Clinic 2000-08-15\nE                 15.0           Clinic 2000-09-10\nE                 15.0         Hospital 2000-03-24\nE                 15.0 Specialty Center 2000-01-20\nE                 15.0 Specialty Center 2000-02-23\nE                 15.0 Specialty Center 2000-03-28\nE                 15.0 Specialty Center 2000-04-26\nE                 15.0 Specialty Center 2000-08-12\nE                 15.0      Urgent Care 2000-01-08\nE                 15.0      Urgent Care 2000-06-02\nE                 15.0      Urgent Care 2001-07-10\nE                 15.0      Urgent Care 2001-10-09\nE                 15.0      Urgent Care 2002-02-23\nE                 15.0      Urgent Care 2002-08-13\nE                 15.0      Urgent Care 2002-11-18\nE                 15.0      Urgent Care 2004-01-10\nE                 15.0      Urgent Care 2005-08-12\nE                 15.0      Urgent Care 2005-10-30\nE       ... (9765 more rows)\n\nsrc/data_quality/data_quality_validation_library.py:111: AssertionError\n&#34;}], &#34;dq checks/parquet_files/test_facility_type_avg_time_spent_per_visit_date.py::test_check_count&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Failed&#34;, &#34;testId&#34;: &#34;dq checks/parquet_files/test_facility_type_avg_time_spent_per_visit_date.py::test_check_count&#34;, &#34;duration&#34;: &#34;0 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Failed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;dq checks/parquet_files/test_facility_type_avg_time_spent_per_visit_date.py::test_check_count&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;0 ms&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;source_data =       facility_type  visit_date avg_time_spent\n0            Clinic  2000-01-01          26.00\n1            Clinic  200...35717   Urgent Care  2026-11-22          48.00\n35718   Urgent Care  2026-11-23          30.00\n\n[35719 rows x 3 columns]\ntarget_data =           facility_type visit_date  avg_time_spent\n0                Clinic 2000-11-27           21.00\n1               ...         Clinic 2026-11-12           25.50\n25933  Specialty Center 2026-11-09           34.25\n\n[25934 rows x 3 columns]\ndata_quality_library = &amp;lt;src.data_quality.data_quality_validation_library.DataQualityLibrary object at 0x7b9214deef90&amp;gt;\n\n    @pytest.mark.parquet_data\n    @pytest.mark.facility_type_avg_time_spent_per_visit_date\n    def test_check_count(source_data, target_data, data_quality_library):\n&amp;gt;       data_quality_library.check_count(source_data, target_data)\n\ntests/dq checks/parquet_files/test_facility_type_avg_time_spent_per_visit_date.py:49: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\ndf_expected =       facility_type  visit_date avg_time_spent\n0            Clinic  2000-01-01          26.00\n1            Clinic  200...35717   Urgent Care  2026-11-22          48.00\n35718   Urgent Care  2026-11-23          30.00\n\n[35719 rows x 3 columns]\ndf_actual =           facility_type visit_date  avg_time_spent\n0                Clinic 2000-11-27           21.00\n1               ...         Clinic 2026-11-12           25.50\n25933  Specialty Center 2026-11-09           34.25\n\n[25934 rows x 3 columns]\n\n    @staticmethod\n    def check_count(df_expected: pd.DataFrame, df_actual: pd.DataFrame):\n        expected, actual = len(df_expected), len(df_actual)\n&amp;gt;       assert expected == actual, (\n               ^^^^^^^^^^^^^^^^^^\n            f&amp;quot;Row count mismatch: expected (source) = {expected}, actual (target) = {actual}, &amp;quot;\n            f&amp;quot;difference = {actual - expected:+d}&amp;quot;\n        )\nE       AssertionError: Row count mismatch: expected (source) = 35719, actual (target) = 25934, difference = -9785\n\nsrc/data_quality/data_quality_validation_library.py:65: AssertionError\n&#34;}], &#34;dq checks/parquet_files/test_facility_type_avg_time_spent_per_visit_date.py::test_check_uniqueness&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Passed&#34;, &#34;testId&#34;: &#34;dq checks/parquet_files/test_facility_type_avg_time_spent_per_visit_date.py::test_check_uniqueness&#34;, &#34;duration&#34;: &#34;3 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;dq checks/parquet_files/test_facility_type_avg_time_spent_per_visit_date.py::test_check_uniqueness&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;3 ms&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;No log output captured.&#34;}], &#34;dq checks/parquet_files/test_facility_type_avg_time_spent_per_visit_date.py::test_check_not_null_values&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Passed&#34;, &#34;testId&#34;: &#34;dq checks/parquet_files/test_facility_type_avg_time_spent_per_visit_date.py::test_check_not_null_values&#34;, &#34;duration&#34;: &#34;0 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;dq checks/parquet_files/test_facility_type_avg_time_spent_per_visit_date.py::test_check_not_null_values&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;0 ms&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;No log output captured.&#34;}], &#34;dq checks/parquet_files/test_patient_sum_treatment_cost_per_facility_type.py::test_check_dataset_is_not_empty&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Passed&#34;, &#34;testId&#34;: &#34;dq checks/parquet_files/test_patient_sum_treatment_cost_per_facility_type.py::test_check_dataset_is_not_empty&#34;, &#34;duration&#34;: &#34;12 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;dq checks/parquet_files/test_patient_sum_treatment_cost_per_facility_type.py::test_check_dataset_is_not_empty&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;12 ms&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;No log output captured.&#34;}], &#34;dq checks/parquet_files/test_patient_sum_treatment_cost_per_facility_type.py::test_check_data_completeness&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Failed&#34;, &#34;testId&#34;: &#34;dq checks/parquet_files/test_patient_sum_treatment_cost_per_facility_type.py::test_check_data_completeness&#34;, &#34;duration&#34;: &#34;64 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Failed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;dq checks/parquet_files/test_patient_sum_treatment_cost_per_facility_type.py::test_check_data_completeness&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;64 ms&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;source_data =     facility_type          full_name sum_treatment_cost\n0          Clinic     Alicia Mendoza         1768089.94\n1     ...e         Susan Ross         1810862.44\n119   Urgent Care       William Holt         1974435.28\n\n[120 rows x 3 columns]\ntarget_data =    facility_type          full_name  sum_treatment_cost\n0         Clinic         April Cook         -1847678.98\n1     ...e       Susan Bishop          1699864.40\n63   Urgent Care                NaN         26414290.07\n\n[64 rows x 3 columns]\ndata_quality_library = &amp;lt;src.data_quality.data_quality_validation_library.DataQualityLibrary object at 0x7b9214deef90&amp;gt;\n\n    @pytest.mark.parquet_data\n    @pytest.mark.patient_sum_treatment_cost_per_facility_type\n    def test_check_data_completeness(source_data, target_data, data_quality_library):\n&amp;gt;       data_quality_library.check_data_completeness(source_data, target_data)\n\ntests/dq checks/parquet_files/test_patient_sum_treatment_cost_per_facility_type.py:44: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\ndf_expected =     facility_type          full_name sum_treatment_cost\n0          Clinic     Alicia Mendoza         1768089.94\n1     ...e         Susan Ross         1810862.44\n119   Urgent Care       William Holt         1974435.28\n\n[120 rows x 3 columns]\ndf_actual =    facility_type          full_name  sum_treatment_cost\n0         Clinic         April Cook         -1847678.98\n1     ...e       Susan Bishop          1699864.40\n63   Urgent Care                NaN         26414290.07\n\n[64 rows x 3 columns]\n\n    @staticmethod\n    def check_data_completeness(df_expected: pd.DataFrame, df_actual: pd.DataFrame):\n        &amp;quot;&amp;quot;&amp;quot;\n        Full data set comparison, row order ignored, duplicates respected.\n        Fails on column set mismatch or any row present on one side only.\n        &amp;quot;&amp;quot;&amp;quot;\n        expected_cols, actual_cols = set(df_expected.columns), set(df_actual.columns)\n        assert expected_cols == actual_cols, (\n            &amp;quot;Column set mismatch.\\n&amp;quot;\n            f&amp;quot;Missing in target: {sorted(expected_cols - actual_cols)}\\n&amp;quot;\n            f&amp;quot;Unexpected in target: {sorted(actual_cols - expected_cols)}&amp;quot;\n        )\n    \n        columns = sorted(expected_cols)\n        expected = DataQualityLibrary._normalize(df_expected[columns])\n        actual = DataQualityLibrary._normalize(df_actual[columns])\n    \n        # Number each occurrence of identical rows so duplicates are compared as well.\n        key = &amp;quot;__occurrence__&amp;quot;\n        expected[key] = expected.groupby(columns, dropna=False).cumcount()\n        actual[key] = actual.groupby(columns, dropna=False).cumcount()\n    \n        merged = expected.merge(actual, on=columns + [key], how=&amp;quot;outer&amp;quot;, indicator=True)\n        only_expected = merged[merged[&amp;quot;_merge&amp;quot;] == &amp;quot;left_only&amp;quot;][columns]\n        only_actual = merged[merged[&amp;quot;_merge&amp;quot;] == &amp;quot;right_only&amp;quot;][columns]\n    \n        if only_expected.empty and only_actual.empty:\n            return\n    \n        message = [\n            &amp;quot;Data completeness check failed: source (expected) and target (actual) differ.&amp;quot;,\n            f&amp;quot;Expected rows: {len(df_expected)}, actual rows: {len(df_actual)}&amp;quot;,\n            f&amp;quot;Rows missing in target (present only in source): {len(only_expected)}&amp;quot;,\n            f&amp;quot;Rows unexpected in target (present only in target): {len(only_actual)}&amp;quot;,\n        ]\n        if not only_expected.empty:\n            message += [&amp;quot;&amp;quot;, &amp;quot;--- Missing in target ---&amp;quot;,\n                        DataQualityLibrary._to_text(only_expected.sort_values(columns))]\n        if not only_actual.empty:\n            message += [&amp;quot;&amp;quot;, &amp;quot;--- Unexpected in target ---&amp;quot;,\n                        DataQualityLibrary._to_text(only_actual.sort_values(columns))]\n&amp;gt;       raise AssertionError(&amp;quot;\\n&amp;quot;.join(message))\nE       AssertionError: Data completeness check failed: source (expected) and target (actual) differ.\nE       Expected rows: 120, actual rows: 64\nE       Rows missing in target (present only in source): 75\nE       Rows unexpected in target (present only in target): 19\nE       \nE       --- Missing in target ---\nE       facility_type         full_name sum_treatment_cost\nE              Clinic    Alicia Mendoza         1768089.94\nE              Clinic        April Cook         1847678.98\nE              Clinic    Brianna Briggs         1684872.83\nE              Clinic    Casey Mitchell         1736770.11\nE              Clinic Christopher Perez         1716868.86\nE              Clinic Christopher Smith         1894314.24\nE              Clinic       Colin Smith         1854436.49\nE              Clinic   Danielle Miller         1891011.93\nE              Clinic       Dennis Nash         1802575.27\nE              Clinic     Edward Brooks         1775185.81\nE              Clinic      Janet Newton         1702287.38\nE              Clinic       Jason Petty         1712052.76\nE              Clinic    Jason Villegas         1766377.48\nE              Clinic   Katherine Arias         1733096.94\nE              Clinic         Kevin Roy         1729502.08\nE              Clinic   Kimberly Harris         1662224.68\nE              Clinic    Kristin Holmes         1662418.54\nE              Clinic   Manuel Morrison         1662451.27\nE              Clinic   Melissa Johnson         1771061.77\nE              Clinic   Michael Maxwell         1714818.95\nE       ... (55 more rows)\nE       \nE       --- Unexpected in target ---\nE          facility_type         full_name sum_treatment_cost\nE                 Clinic        April Cook        -1847678.98\nE                 Clinic    Casey Mitchell        -1736770.11\nE                 Clinic Christopher Smith        -1894314.24\nE                 Clinic       Colin Smith        -1854436.49\nE                 Clinic       Dennis Nash        -1802575.27\nE                 Clinic      Janet Newton        -1702287.38\nE                 Clinic       Jason Petty        -1712052.76\nE                 Clinic         Kevin Roy        -1729502.08\nE                 Clinic    Kristin Holmes        -1662418.54\nE                 Clinic   Manuel Morrison        -1662451.27\nE                 Clinic   Michael Maxwell        -1714818.95\nE                 Clinic     Patricia Cruz        -1778569.48\nE                 Clinic      Sandra Stein        -1819149.37\nE                 Clinic     Steven Cherry        -1670063.39\nE                 Clinic      Susan Bishop        -1740367.18\nE                 Clinic               NaN       -26506414.79\nE               Hospital               NaN        26249144.76\nE       Specialty Center               NaN        26481237.95\nE            Urgent Care               NaN        26414290.07\n\nsrc/data_quality/data_quality_validation_library.py:111: AssertionError\n&#34;}], &#34;dq checks/parquet_files/test_patient_sum_treatment_cost_per_facility_type.py::test_check_count&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Failed&#34;, &#34;testId&#34;: &#34;dq checks/parquet_files/test_patient_sum_treatment_cost_per_facility_type.py::test_check_count&#34;, &#34;duration&#34;: &#34;0 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Failed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;dq checks/parquet_files/test_patient_sum_treatment_cost_per_facility_type.py::test_check_count&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;0 ms&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;source_data =     facility_type          full_name sum_treatment_cost\n0          Clinic     Alicia Mendoza         1768089.94\n1     ...e         Susan Ross         1810862.44\n119   Urgent Care       William Holt         1974435.28\n\n[120 rows x 3 columns]\ntarget_data =    facility_type          full_name  sum_treatment_cost\n0         Clinic         April Cook         -1847678.98\n1     ...e       Susan Bishop          1699864.40\n63   Urgent Care                NaN         26414290.07\n\n[64 rows x 3 columns]\ndata_quality_library = &amp;lt;src.data_quality.data_quality_validation_library.DataQualityLibrary object at 0x7b9214deef90&amp;gt;\n\n    @pytest.mark.parquet_data\n    @pytest.mark.patient_sum_treatment_cost_per_facility_type\n    def test_check_count(source_data, target_data, data_quality_library):\n&amp;gt;       data_quality_library.check_count(source_data, target_data)\n\ntests/dq checks/parquet_files/test_patient_sum_treatment_cost_per_facility_type.py:50: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\ndf_expected =     facility_type          full_name sum_treatment_cost\n0          Clinic     Alicia Mendoza         1768089.94\n1     ...e         Susan Ross         1810862.44\n119   Urgent Care       William Holt         1974435.28\n\n[120 rows x 3 columns]\ndf_actual =    facility_type          full_name  sum_treatment_cost\n0         Clinic         April Cook         -1847678.98\n1     ...e       Susan Bishop          1699864.40\n63   Urgent Care                NaN         26414290.07\n\n[64 rows x 3 columns]\n\n    @staticmethod\n    def check_count(df_expected: pd.DataFrame, df_actual: pd.DataFrame):\n        expected, actual = len(df_expected), len(df_actual)\n&amp;gt;       assert expected == actual, (\n               ^^^^^^^^^^^^^^^^^^\n            f&amp;quot;Row count mismatch: expected (source) = {expected}, actual (target) = {actual}, &amp;quot;\n            f&amp;quot;difference = {actual - expected:+d}&amp;quot;\n        )\nE       AssertionError: Row count mismatch: expected (source) = 120, actual (target) = 64, difference = -56\n\nsrc/data_quality/data_quality_validation_library.py:65: AssertionError\n&#34;}], &#34;dq checks/parquet_files/test_patient_sum_treatment_cost_per_facility_type.py::test_check_uniqueness&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Passed&#34;, &#34;testId&#34;: &#34;dq checks/parquet_files/test_patient_sum_treatment_cost_per_facility_type.py::test_check_uniqueness&#34;, &#34;duration&#34;: &#34;1 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;dq checks/parquet_files/test_patient_sum_treatment_cost_per_facility_type.py::test_check_uniqueness&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;1 ms&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;No log output captured.&#34;}], &#34;dq checks/parquet_files/test_patient_sum_treatment_cost_per_facility_type.py::test_check_not_null_values&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Failed&#34;, &#34;testId&#34;: &#34;dq checks/parquet_files/test_patient_sum_treatment_cost_per_facility_type.py::test_check_not_null_values&#34;, &#34;duration&#34;: &#34;2 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Failed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;dq checks/parquet_files/test_patient_sum_treatment_cost_per_facility_type.py::test_check_not_null_values&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;2 ms&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;target_data =    facility_type          full_name  sum_treatment_cost\n0         Clinic         April Cook         -1847678.98\n1     ...e       Susan Bishop          1699864.40\n63   Urgent Care                NaN         26414290.07\n\n[64 rows x 3 columns]\ndata_quality_library = &amp;lt;src.data_quality.data_quality_validation_library.DataQualityLibrary object at 0x7b9214deef90&amp;gt;\n\n    @pytest.mark.parquet_data\n    @pytest.mark.patient_sum_treatment_cost_per_facility_type\n    def test_check_not_null_values(target_data, data_quality_library):\n&amp;gt;       data_quality_library.check_not_null_values(target_data, [&amp;#x27;facility_type&amp;#x27;, &amp;#x27;full_name&amp;#x27;, &amp;#x27;sum_treatment_cost&amp;#x27;])\n\ntests/dq checks/parquet_files/test_patient_sum_treatment_cost_per_facility_type.py:62: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\ndf =    facility_type          full_name  sum_treatment_cost\n0         Clinic         April Cook         -1847678.98\n1     ...e       Susan Bishop          1699864.40\n63   Urgent Care                NaN         26414290.07\n\n[64 rows x 3 columns]\ncolumn_names = [&amp;#x27;facility_type&amp;#x27;, &amp;#x27;full_name&amp;#x27;, &amp;#x27;sum_treatment_cost&amp;#x27;]\n\n    @staticmethod\n    def check_not_null_values(df: pd.DataFrame, column_names=None):\n        columns = list(column_names) if column_names else list(df.columns)\n        missing = [c for c in columns if c not in df.columns]\n        assert not missing, f&amp;quot;Columns not found for not-null check: {missing}. Available: {list(df.columns)}&amp;quot;\n    \n        null_counts = {c: int(df[c].isna().sum()) for c in columns}\n        failed = {c: n for c, n in null_counts.items() if n &amp;gt; 0}\n        if not failed:\n            return\n        sample = df[df[list(failed)].isna().any(axis=1)]\n&amp;gt;       raise AssertionError(\n            f&amp;quot;Null values found (column: null count): {failed} out of {len(df)} rows.\\n&amp;quot;\n            + DataQualityLibrary._to_text(sample)\n        )\nE       AssertionError: Null values found (column: null count): {&amp;#x27;full_name&amp;#x27;: 4} out of 64 rows.\nE          facility_type full_name  sum_treatment_cost\nE                 Clinic       NaN        -26506414.79\nE               Hospital       NaN         26249144.76\nE       Specialty Center       NaN         26481237.95\nE            Urgent Care       NaN         26414290.07\n\nsrc/data_quality/data_quality_validation_library.py:143: AssertionError\n&#34;}]}, &#34;renderCollapsed&#34;: [&#34;passed&#34;], &#34;initialSort&#34;: &#34;result&#34;, &#34;title&#34;: &#34;report.html&#34;}"></div>
+    <script>
+      (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+const { getCollapsedCategory, setCollapsedIds } = require('./storage.js')
+
+class DataManager {
+    setManager(data) {
+        const collapsedCategories = [...getCollapsedCategory(data.renderCollapsed)]
+        const collapsedIds = []
+        const tests = Object.values(data.tests).flat().map((test, index) => {
+            const collapsed = collapsedCategories.includes(test.result.toLowerCase())
+            const id = `test_${index}`
+            if (collapsed) {
+                collapsedIds.push(id)
+            }
+            return {
+                ...test,
+                id,
+                collapsed,
+            }
+        })
+        const dataBlob = { ...data, tests }
+        this.data = { ...dataBlob }
+        this.renderData = { ...dataBlob }
+        setCollapsedIds(collapsedIds)
+    }
+
+    get allData() {
+        return { ...this.data }
+    }
+
+    resetRender() {
+        this.renderData = { ...this.data }
+    }
+
+    setRender(data) {
+        this.renderData.tests = [...data]
+    }
+
+    toggleCollapsedItem(id) {
+        this.renderData.tests = this.renderData.tests.map((test) =>
+            test.id === id ? { ...test, collapsed: !test.collapsed } : test,
+        )
+    }
+
+    set allCollapsed(collapsed) {
+        this.renderData = { ...this.renderData, tests: [...this.renderData.tests.map((test) => (
+            { ...test, collapsed }
+        ))] }
+    }
+
+    get testSubset() {
+        return [...this.renderData.tests]
+    }
+
+    get environment() {
+        return this.renderData.environment
+    }
+
+    get initialSort() {
+        return this.data.initialSort
+    }
+}
+
+module.exports = {
+    manager: new DataManager(),
+}
+
+},{"./storage.js":8}],2:[function(require,module,exports){
+const mediaViewer = require('./mediaviewer.js')
+const templateEnvRow = document.getElementById('template_environment_row')
+const templateResult = document.getElementById('template_results-table__tbody')
+
+function htmlToElements(html) {
+    const temp = document.createElement('template')
+    temp.innerHTML = html
+    return temp.content.childNodes
+}
+
+const find = (selector, elem) => {
+    if (!elem) {
+        elem = document
+    }
+    return elem.querySelector(selector)
+}
+
+const findAll = (selector, elem) => {
+    if (!elem) {
+        elem = document
+    }
+    return [...elem.querySelectorAll(selector)]
+}
+
+const dom = {
+    getStaticRow: (key, value) => {
+        const envRow = templateEnvRow.content.cloneNode(true)
+        const isObj = typeof value === 'object' && value !== null
+        const values = isObj ? Object.keys(value).map((k) => `${k}: ${value[k]}`) : null
+
+        const valuesElement = htmlToElements(
+            values ? `<ul>${values.map((val) => `<li>${val}</li>`).join('')}<ul>` : `<div>${value}</div>`)[0]
+        const td = findAll('td', envRow)
+        td[0].textContent = key
+        td[1].appendChild(valuesElement)
+
+        return envRow
+    },
+    getResultTBody: ({ testId, id, log, extras, resultsTableRow, tableHtml, result, collapsed }) => {
+        const resultBody = templateResult.content.cloneNode(true)
+        resultBody.querySelector('tbody').classList.add(result.toLowerCase())
+        resultBody.querySelector('tbody').id = testId
+        resultBody.querySelector('.collapsible').dataset.id = id
+
+        resultsTableRow.forEach((html) => {
+            const t = document.createElement('template')
+            t.innerHTML = html
+            resultBody.querySelector('.collapsible').appendChild(t.content)
+        })
+
+        if (log) {
+            // Wrap lines starting with "E" with span.error to color those lines red
+            const wrappedLog = log.replace(/^E.*$/gm, (match) => `<span class="error">${match}</span>`)
+            resultBody.querySelector('.log').innerHTML = wrappedLog
+        } else {
+            resultBody.querySelector('.log').remove()
+        }
+
+        if (collapsed) {
+            resultBody.querySelector('.collapsible > .col-result')?.classList.add('collapsed')
+            resultBody.querySelector('.extras-row').classList.add('hidden')
+        } else {
+            resultBody.querySelector('.collapsible > .col-result')?.classList.remove('collapsed')
+        }
+
+        const media = []
+        extras?.forEach(({ name, format_type, content }) => {
+            if (['image', 'video'].includes(format_type)) {
+                media.push({ path: content, name, format_type })
+            }
+
+            if (format_type === 'html') {
+                resultBody.querySelector('.extraHTML').insertAdjacentHTML('beforeend', `<div>${content}</div>`)
+            }
+        })
+        mediaViewer.setup(resultBody, media)
+
+        // Add custom html from the pytest_html_results_table_html hook
+        tableHtml?.forEach((item) => {
+            resultBody.querySelector('td[class="extra"]').insertAdjacentHTML('beforeend', item)
+        })
+
+        return resultBody
+    },
+}
+
+module.exports = {
+    dom,
+    htmlToElements,
+    find,
+    findAll,
+}
+
+},{"./mediaviewer.js":6}],3:[function(require,module,exports){
+const { manager } = require('./datamanager.js')
+const { doSort } = require('./sort.js')
+const storageModule = require('./storage.js')
+
+const getFilteredSubSet = (filter) =>
+    manager.allData.tests.filter(({ result }) => filter.includes(result.toLowerCase()))
+
+const doInitFilter = () => {
+    const currentFilter = storageModule.getVisible()
+    const filteredSubset = getFilteredSubSet(currentFilter)
+    manager.setRender(filteredSubset)
+}
+
+const doFilter = (type, show) => {
+    if (show) {
+        storageModule.showCategory(type)
+    } else {
+        storageModule.hideCategory(type)
+    }
+
+    const currentFilter = storageModule.getVisible()
+    const filteredSubset = getFilteredSubSet(currentFilter)
+    manager.setRender(filteredSubset)
+
+    const sortColumn = storageModule.getSort()
+    doSort(sortColumn, true)
+}
+
+module.exports = {
+    doFilter,
+    doInitFilter,
+}
+
+},{"./datamanager.js":1,"./sort.js":7,"./storage.js":8}],4:[function(require,module,exports){
+const { redraw, bindEvents, renderStatic } = require('./main.js')
+const { doInitFilter } = require('./filter.js')
+const { doInitSort } = require('./sort.js')
+const { manager } = require('./datamanager.js')
+const data = JSON.parse(document.getElementById('data-container').dataset.jsonblob)
+
+function init() {
+    manager.setManager(data)
+    doInitFilter()
+    doInitSort()
+    renderStatic()
+    redraw()
+    bindEvents()
+}
+
+init()
+
+},{"./datamanager.js":1,"./filter.js":3,"./main.js":5,"./sort.js":7}],5:[function(require,module,exports){
+const { dom, find, findAll } = require('./dom.js')
+const { manager } = require('./datamanager.js')
+const { doSort } = require('./sort.js')
+const { doFilter } = require('./filter.js')
+const {
+    getVisible,
+    getCollapsedIds,
+    setCollapsedIds,
+    getSort,
+    getSortDirection,
+    possibleFilters,
+} = require('./storage.js')
+
+const removeChildren = (node) => {
+    while (node.firstChild) {
+        node.removeChild(node.firstChild)
+    }
+}
+
+const renderStatic = () => {
+    const renderEnvironmentTable = () => {
+        const environment = manager.environment
+        const rows = Object.keys(environment).map((key) => dom.getStaticRow(key, environment[key]))
+        const table = document.getElementById('environment')
+        removeChildren(table)
+        rows.forEach((row) => table.appendChild(row))
+    }
+    renderEnvironmentTable()
+}
+
+const addItemToggleListener = (elem) => {
+    elem.addEventListener('click', ({ target }) => {
+        const id = target.parentElement.dataset.id
+        manager.toggleCollapsedItem(id)
+
+        const collapsedIds = getCollapsedIds()
+        if (collapsedIds.includes(id)) {
+            const updated = collapsedIds.filter((item) => item !== id)
+            setCollapsedIds(updated)
+        } else {
+            collapsedIds.push(id)
+            setCollapsedIds(collapsedIds)
+        }
+        redraw()
+    })
+}
+
+const renderContent = (tests) => {
+    const sortAttr = getSort(manager.initialSort)
+    const sortAsc = JSON.parse(getSortDirection())
+    const rows = tests.map(dom.getResultTBody)
+    const table = document.getElementById('results-table')
+    const tableHeader = document.getElementById('results-table-head')
+
+    const newTable = document.createElement('table')
+    newTable.id = 'results-table'
+
+    // remove all sorting classes and set the relevant
+    findAll('.sortable', tableHeader).forEach((elem) => elem.classList.remove('asc', 'desc'))
+    tableHeader.querySelector(`.sortable[data-column-type="${sortAttr}"]`)?.classList.add(sortAsc ? 'desc' : 'asc')
+    newTable.appendChild(tableHeader)
+
+    if (!rows.length) {
+        const emptyTable = document.getElementById('template_results-table__body--empty').content.cloneNode(true)
+        newTable.appendChild(emptyTable)
+    } else {
+        rows.forEach((row) => {
+            if (!!row) {
+                findAll('.collapsible td:not(.col-links', row).forEach(addItemToggleListener)
+                find('.logexpander', row).addEventListener('click',
+                    (evt) => evt.target.parentNode.classList.toggle('expanded'),
+                )
+                newTable.appendChild(row)
+            }
+        })
+    }
+
+    table.replaceWith(newTable)
+}
+
+const renderDerived = () => {
+    const currentFilter = getVisible()
+    possibleFilters.forEach((result) => {
+        const input = document.querySelector(`input[data-test-result="${result}"]`)
+        input.checked = currentFilter.includes(result)
+    })
+}
+
+const bindEvents = () => {
+    const filterColumn = (evt) => {
+        const { target: element } = evt
+        const { testResult } = element.dataset
+
+        doFilter(testResult, element.checked)
+        const collapsedIds = getCollapsedIds()
+        const updated = manager.renderData.tests.map((test) => {
+            return {
+                ...test,
+                collapsed: collapsedIds.includes(test.id),
+            }
+        })
+        manager.setRender(updated)
+        redraw()
+    }
+
+    const header = document.getElementById('environment-header')
+    header.addEventListener('click', () => {
+        const table = document.getElementById('environment')
+        table.classList.toggle('hidden')
+        header.classList.toggle('collapsed')
+    })
+
+    findAll('input[name="filter_checkbox"]').forEach((elem) => {
+        elem.addEventListener('click', filterColumn)
+    })
+
+    findAll('.sortable').forEach((elem) => {
+        elem.addEventListener('click', (evt) => {
+            const { target: element } = evt
+            const { columnType } = element.dataset
+            doSort(columnType)
+            redraw()
+        })
+    })
+
+    document.getElementById('show_all_details').addEventListener('click', () => {
+        manager.allCollapsed = false
+        setCollapsedIds([])
+        redraw()
+    })
+    document.getElementById('hide_all_details').addEventListener('click', () => {
+        manager.allCollapsed = true
+        const allIds = manager.renderData.tests.map((test) => test.id)
+        setCollapsedIds(allIds)
+        redraw()
+    })
+}
+
+const redraw = () => {
+    const { testSubset } = manager
+
+    renderContent(testSubset)
+    renderDerived()
+}
+
+module.exports = {
+    redraw,
+    bindEvents,
+    renderStatic,
+}
+
+},{"./datamanager.js":1,"./dom.js":2,"./filter.js":3,"./sort.js":7,"./storage.js":8}],6:[function(require,module,exports){
+class MediaViewer {
+    constructor(assets) {
+        this.assets = assets
+        this.index = 0
+    }
+
+    nextActive() {
+        this.index = this.index === this.assets.length - 1 ? 0 : this.index + 1
+        return [this.activeFile, this.index]
+    }
+
+    prevActive() {
+        this.index = this.index === 0 ? this.assets.length - 1 : this.index -1
+        return [this.activeFile, this.index]
+    }
+
+    get currentIndex() {
+        return this.index
+    }
+
+    get activeFile() {
+        return this.assets[this.index]
+    }
+}
+
+
+const setup = (resultBody, assets) => {
+    if (!assets.length) {
+        resultBody.querySelector('.media').classList.add('hidden')
+        return
+    }
+
+    const mediaViewer = new MediaViewer(assets)
+    const container = resultBody.querySelector('.media-container')
+    const leftArrow = resultBody.querySelector('.media-container__nav--left')
+    const rightArrow = resultBody.querySelector('.media-container__nav--right')
+    const mediaName = resultBody.querySelector('.media__name')
+    const counter = resultBody.querySelector('.media__counter')
+    const imageEl = resultBody.querySelector('img')
+    const sourceEl = resultBody.querySelector('source')
+    const videoEl = resultBody.querySelector('video')
+
+    const setImg = (media, index) => {
+        if (media?.format_type === 'image') {
+            imageEl.src = media.path
+
+            imageEl.classList.remove('hidden')
+            videoEl.classList.add('hidden')
+        } else if (media?.format_type === 'video') {
+            sourceEl.src = media.path
+
+            videoEl.classList.remove('hidden')
+            imageEl.classList.add('hidden')
+        }
+
+        mediaName.innerText = media?.name
+        counter.innerText = `${index + 1} / ${assets.length}`
+    }
+    setImg(mediaViewer.activeFile, mediaViewer.currentIndex)
+
+    const moveLeft = () => {
+        const [media, index] = mediaViewer.prevActive()
+        setImg(media, index)
+    }
+    const doRight = () => {
+        const [media, index] = mediaViewer.nextActive()
+        setImg(media, index)
+    }
+    const openImg = () => {
+        window.open(mediaViewer.activeFile.path, '_blank')
+    }
+    if (assets.length === 1) {
+        container.classList.add('media-container--fullscreen')
+    } else {
+        leftArrow.addEventListener('click', moveLeft)
+        rightArrow.addEventListener('click', doRight)
+    }
+    imageEl.addEventListener('click', openImg)
+}
+
+module.exports = {
+    setup,
+}
+
+},{}],7:[function(require,module,exports){
+const { manager } = require('./datamanager.js')
+const storageModule = require('./storage.js')
+
+const genericSort = (list, key, ascending, customOrder) => {
+    let sorted
+    if (customOrder) {
+        sorted = list.sort((a, b) => {
+            const aValue = a.result.toLowerCase()
+            const bValue = b.result.toLowerCase()
+
+            const aIndex = customOrder.findIndex((item) => item.toLowerCase() === aValue)
+            const bIndex = customOrder.findIndex((item) => item.toLowerCase() === bValue)
+
+            // Compare the indices to determine the sort order
+            return aIndex - bIndex
+        })
+    } else {
+        sorted = list.sort((a, b) => a[key] === b[key] ? 0 : a[key] > b[key] ? 1 : -1)
+    }
+
+    if (ascending) {
+        sorted.reverse()
+    }
+    return sorted
+}
+
+const durationSort = (list, ascending) => {
+    const parseDuration = (duration) => {
+        if (duration.includes(':')) {
+            // If it's in the format "HH:mm:ss"
+            const [hours, minutes, seconds] = duration.split(':').map(Number)
+            return (hours * 3600 + minutes * 60 + seconds) * 1000
+        } else {
+            // If it's in the format "nnn ms"
+            return parseInt(duration)
+        }
+    }
+    const sorted = list.sort((a, b) => parseDuration(a['duration']) - parseDuration(b['duration']))
+    if (ascending) {
+        sorted.reverse()
+    }
+    return sorted
+}
+
+const doInitSort = () => {
+    const type = storageModule.getSort(manager.initialSort)
+    const ascending = storageModule.getSortDirection()
+    const list = manager.testSubset
+    const initialOrder = ['Error', 'Failed', 'Rerun', 'XFailed', 'XPassed', 'Skipped', 'Passed']
+
+    storageModule.setSort(type)
+    storageModule.setSortDirection(ascending)
+
+    if (type?.toLowerCase() === 'original') {
+        manager.setRender(list)
+    } else {
+        let sortedList
+        switch (type) {
+        case 'duration':
+            sortedList = durationSort(list, ascending)
+            break
+        case 'result':
+            sortedList = genericSort(list, type, ascending, initialOrder)
+            break
+        default:
+            sortedList = genericSort(list, type, ascending)
+            break
+        }
+        manager.setRender(sortedList)
+    }
+}
+
+const doSort = (type, skipDirection) => {
+    const newSortType = storageModule.getSort(manager.initialSort) !== type
+    const currentAsc = storageModule.getSortDirection()
+    let ascending
+    if (skipDirection) {
+        ascending = currentAsc
+    } else {
+        ascending = newSortType ? false : !currentAsc
+    }
+    storageModule.setSort(type)
+    storageModule.setSortDirection(ascending)
+
+    const list = manager.testSubset
+    const sortedList = type === 'duration' ? durationSort(list, ascending) : genericSort(list, type, ascending)
+    manager.setRender(sortedList)
+}
+
+module.exports = {
+    doInitSort,
+    doSort,
+}
+
+},{"./datamanager.js":1,"./storage.js":8}],8:[function(require,module,exports){
+const possibleFilters = [
+    'passed',
+    'skipped',
+    'failed',
+    'error',
+    'xfailed',
+    'xpassed',
+    'rerun',
+]
+
+const getVisible = () => {
+    const url = new URL(window.location.href)
+    const settings = new URLSearchParams(url.search).get('visible')
+    const lower = (item) => {
+        const lowerItem = item.toLowerCase()
+        if (possibleFilters.includes(lowerItem)) {
+            return lowerItem
+        }
+        return null
+    }
+    return settings === null ?
+        possibleFilters :
+        [...new Set(settings?.split(',').map(lower).filter((item) => item))]
+}
+
+const hideCategory = (categoryToHide) => {
+    const url = new URL(window.location.href)
+    const visibleParams = new URLSearchParams(url.search).get('visible')
+    const currentVisible = visibleParams ? visibleParams.split(',') : [...possibleFilters]
+    const settings = [...new Set(currentVisible)].filter((f) => f !== categoryToHide).join(',')
+
+    url.searchParams.set('visible', settings)
+    window.history.pushState({}, null, unescape(url.href))
+}
+
+const showCategory = (categoryToShow) => {
+    if (typeof window === 'undefined') {
+        return
+    }
+    const url = new URL(window.location.href)
+    const currentVisible = new URLSearchParams(url.search).get('visible')?.split(',').filter(Boolean) ||
+        [...possibleFilters]
+    const settings = [...new Set([categoryToShow, ...currentVisible])]
+    const noFilter = possibleFilters.length === settings.length || !settings.length
+
+    noFilter ? url.searchParams.delete('visible') : url.searchParams.set('visible', settings.join(','))
+    window.history.pushState({}, null, unescape(url.href))
+}
+
+const getSort = (initialSort) => {
+    const url = new URL(window.location.href)
+    let sort = new URLSearchParams(url.search).get('sort')
+    if (!sort) {
+        sort = initialSort || 'result'
+    }
+    return sort
+}
+
+const setSort = (type) => {
+    const url = new URL(window.location.href)
+    url.searchParams.set('sort', type)
+    window.history.pushState({}, null, unescape(url.href))
+}
+
+const getCollapsedCategory = (renderCollapsed) => {
+    let categories
+    if (typeof window !== 'undefined') {
+        const url = new URL(window.location.href)
+        const collapsedItems = new URLSearchParams(url.search).get('collapsed')
+        switch (true) {
+        case !renderCollapsed && collapsedItems === null:
+            categories = ['passed']
+            break
+        case collapsedItems?.length === 0 || /^["']{2}$/.test(collapsedItems):
+            categories = []
+            break
+        case /^all$/.test(collapsedItems) || collapsedItems === null && /^all$/.test(renderCollapsed):
+            categories = [...possibleFilters]
+            break
+        default:
+            categories = collapsedItems?.split(',').map((item) => item.toLowerCase()) || renderCollapsed
+            break
+        }
+    } else {
+        categories = []
+    }
+    return categories
+}
+
+const getSortDirection = () => JSON.parse(sessionStorage.getItem('sortAsc')) || false
+const setSortDirection = (ascending) => sessionStorage.setItem('sortAsc', ascending)
+
+const getCollapsedIds = () => JSON.parse(sessionStorage.getItem('collapsedIds')) || []
+const setCollapsedIds = (list) => sessionStorage.setItem('collapsedIds', JSON.stringify(list))
+
+module.exports = {
+    getVisible,
+    hideCategory,
+    showCategory,
+    getCollapsedIds,
+    setCollapsedIds,
+    getSort,
+    setSort,
+    getSortDirection,
+    setSortDirection,
+    getCollapsedCategory,
+    possibleFilters,
+}
+
+},{}]},{},[4]);
+    </script>
+  </footer>
+  </body>
+</html>

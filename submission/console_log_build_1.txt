@@ -1,0 +1,986 @@
+Started by user Sakhanda Vladyslav
+Obtained PyTest DQ Framework/Jenkinsfile from git https://github.com/vladsakhanda/dqe-automation
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/jenkins_home/workspace/dq_tests
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://github.com/vladsakhanda/dqe-automation
+ > git init /var/jenkins_home/workspace/dq_tests # timeout=10
+Fetching upstream changes from https://github.com/vladsakhanda/dqe-automation
+ > git --version # timeout=10
+ > git --version # 'git version 2.47.3'
+ > git fetch --tags --force --progress -- https://github.com/vladsakhanda/dqe-automation +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/vladsakhanda/dqe-automation # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision e2fff0bca7e8148d38ae0ee303965a33ac46276a (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f e2fff0bca7e8148d38ae0ee303965a33ac46276a # timeout=10
+Commit message: "Add remaining parquet DQ test modules and defect report"
+First time build. Skipping changelog.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withCredentials
+Masking supported pattern matches of $POSTGRES_SECRET or $POSTGRES_SECRET_PSW
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Install System Packages)
+[Pipeline] sh
++ apt-get update
+Hit:1 http://deb.debian.org/debian trixie InRelease
+Hit:2 http://deb.debian.org/debian trixie-updates InRelease
+Hit:3 http://deb.debian.org/debian-security trixie-security InRelease
+Reading package lists...
++ apt-get install -y python3 python3-pip python3-venv
+Reading package lists...
+Building dependency tree...
+Reading state information...
+python3 is already the newest version (3.13.5-1).
+python3-pip is already the newest version (25.1.1+dfsg-1).
+python3-venv is already the newest version (3.13.5-1).
+0 upgraded, 0 newly installed, 0 to remove and 31 not upgraded.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Install Dependencies)
+[Pipeline] dir
+Running in /var/jenkins_home/workspace/dq_tests/PyTest DQ Framework
+[Pipeline] {
+[Pipeline] sh
++ python3 -m venv venv
++ . venv/bin/activate
++ deactivate nondestructive
++ [ -n  ]
++ [ -n  ]
++ hash -r
++ [ -n  ]
++ unset VIRTUAL_ENV
++ unset VIRTUAL_ENV_PROMPT
++ [ ! nondestructive = nondestructive ]
++ uname
++ export VIRTUAL_ENV=/var/jenkins_home/workspace/dq_tests/PyTest DQ Framework/venv
++ _OLD_VIRTUAL_PATH=/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++ PATH=/var/jenkins_home/workspace/dq_tests/PyTest DQ Framework/venv/bin:/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++ export PATH
++ VIRTUAL_ENV_PROMPT=venv
++ export VIRTUAL_ENV_PROMPT
++ [ -n  ]
++ [ -z  ]
++ _OLD_VIRTUAL_PS1=# 
++ PS1=(venv) # 
++ export PS1
++ hash -r
++ pip install --upgrade pip
+Requirement already satisfied: pip in ./venv/lib/python3.13/site-packages (25.1.1)
+Collecting pip
+  Downloading pip-26.3-py3-none-any.whl.metadata (4.6 kB)
+Downloading pip-26.3-py3-none-any.whl (2.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.0/2.0 MB 12.0 MB/s eta 0:00:00
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 25.1.1
+    Uninstalling pip-25.1.1:
+      Successfully uninstalled pip-25.1.1
+Successfully installed pip-26.3
++ pip install -r requirements.txt
+Collecting psycopg2-binary>=2.9.10 (from -r requirements.txt (line 1))
+  Downloading psycopg2_binary-2.9.13-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (4.9 kB)
+Collecting pandas>=2.2.3 (from -r requirements.txt (line 2))
+  Downloading pandas-3.1.1-cp313-cp313-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (16 kB)
+Collecting pyarrow>=19.0.1 (from -r requirements.txt (line 3))
+  Downloading pyarrow-26.0.1-cp313-cp313-manylinux_2_28_x86_64.whl.metadata (3.0 kB)
+Collecting pytest>=8.4.0 (from -r requirements.txt (line 4))
+  Downloading pytest-9.2.0-py3-none-any.whl.metadata (7.9 kB)
+Collecting pytest-html>=4.1.1 (from -r requirements.txt (line 5))
+  Downloading pytest_html-4.2.0-py3-none-any.whl.metadata (4.0 kB)
+Collecting numpy>=2.0.2 (from pandas>=2.2.3->-r requirements.txt (line 2))
+  Downloading numpy-2.5.5-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+Collecting python-dateutil>=2.9.0 (from pandas>=2.2.3->-r requirements.txt (line 2))
+  Using cached python_dateutil-4.0.0-py3-none-any.whl.metadata (7.3 kB)
+Collecting iniconfig>=2 (from pytest>=8.4.0->-r requirements.txt (line 4))
+  Downloading iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)
+Collecting packaging>=24 (from pytest>=8.4.0->-r requirements.txt (line 4))
+  Using cached packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Collecting pluggy<2,>=1.6 (from pytest>=8.4.0->-r requirements.txt (line 4))
+  Downloading pluggy-1.7.0-py3-none-any.whl.metadata (5.0 kB)
+Collecting pygments>=2.15 (from pytest>=8.4.0->-r requirements.txt (line 4))
+  Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting jinja2>=3 (from pytest-html>=4.1.1->-r requirements.txt (line 5))
+  Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Collecting pytest-metadata>=2 (from pytest-html>=4.1.1->-r requirements.txt (line 5))
+  Downloading pytest_metadata-3.1.1-py3-none-any.whl.metadata (8.6 kB)
+Collecting MarkupSafe>=2.0 (from jinja2>=3->pytest-html>=4.1.1->-r requirements.txt (line 5))
+  Downloading markupsafe-3.0.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+Collecting tzdata (from python-dateutil>=2.9.0->pandas>=2.2.3->-r requirements.txt (line 2))
+  Using cached tzdata-2026.6-py2.py3-none-any.whl.metadata (1.4 kB)
+Downloading psycopg2_binary-2.9.13-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (4.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.3/4.3 MB 15.6 MB/s  0:00:00
+Downloading pandas-3.1.1-cp313-cp313-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (12.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.0/12.0 MB 13.3 MB/s  0:00:00
+Downloading pyarrow-26.0.1-cp313-cp313-manylinux_2_28_x86_64.whl (55.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 55.0/55.0 MB 5.1 MB/s  0:00:10
+Downloading pytest-9.2.0-py3-none-any.whl (411 kB)
+Downloading pluggy-1.7.0-py3-none-any.whl (27 kB)
+Downloading pytest_html-4.2.0-py3-none-any.whl (23 kB)
+Downloading iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+Downloading markupsafe-3.0.4-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (23 kB)
+Downloading numpy-2.5.5-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (15.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 15.7/15.7 MB 14.3 MB/s  0:00:01
+Using cached packaging-26.3-py3-none-any.whl (129 kB)
+Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 9.0 MB/s  0:00:00
+Downloading pytest_metadata-3.1.1-py3-none-any.whl (11 kB)
+Using cached python_dateutil-4.0.0-py3-none-any.whl (92 kB)
+Using cached tzdata-2026.6-py2.py3-none-any.whl (348 kB)
+Installing collected packages: tzdata, pygments, pyarrow, psycopg2-binary, pluggy, packaging, numpy, MarkupSafe, iniconfig, python-dateutil, pytest, jinja2, pytest-metadata, pandas, pytest-html
+
+Successfully installed MarkupSafe-3.0.4 iniconfig-2.3.1 jinja2-3.1.6 numpy-2.5.5 packaging-26.3 pandas-3.1.1 pluggy-1.7.0 psycopg2-binary-2.9.13 pyarrow-26.0.1 pygments-2.21.0 pytest-9.2.0 pytest-html-4.2.0 pytest-metadata-3.1.1 python-dateutil-4.0.0 tzdata-2026.6
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Run DQ Tests)
+[Pipeline] dir
+Running in /var/jenkins_home/workspace/dq_tests/PyTest DQ Framework
+[Pipeline] {
+[Pipeline] catchError
+[Pipeline] {
+[Pipeline] sh
++ . venv/bin/activate
++ deactivate nondestructive
++ [ -n  ]
++ [ -n  ]
++ hash -r
++ [ -n  ]
++ unset VIRTUAL_ENV
++ unset VIRTUAL_ENV_PROMPT
++ [ ! nondestructive = nondestructive ]
++ uname
++ export VIRTUAL_ENV=/var/jenkins_home/workspace/dq_tests/PyTest DQ Framework/venv
++ _OLD_VIRTUAL_PATH=/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++ PATH=/var/jenkins_home/workspace/dq_tests/PyTest DQ Framework/venv/bin:/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++ export PATH
++ VIRTUAL_ENV_PROMPT=venv
++ export VIRTUAL_ENV_PROMPT
++ [ -n  ]
++ [ -z  ]
++ _OLD_VIRTUAL_PS1=# 
++ PS1=(venv) # 
++ export PS1
++ hash -r
++ rm -rf html_report
++ pytest tests -m parquet_data --db_host=postgres --db_port=5432 --db_name=mydatabase --db_user=myuser --db_password=**** --html=html_report/report.html
+============================= test session starts ==============================
+platform linux -- Python 3.13.5, pytest-9.2.0, pluggy-1.7.0
+rootdir: /var/jenkins_home/workspace/dq_tests/PyTest DQ Framework/tests
+configfile: pytest.ini
+plugins: metadata-3.1.1, html-4.2.0
+collected 20 items / 5 deselected / 15 selected
+
+tests/dq checks/parquet_files/test_facility_name_min_time_spent_per_visit_date.py . [  6%]
+FFF.                                                                     [ 33%]
+tests/dq checks/parquet_files/test_facility_type_avg_time_spent_per_visit_date.py . [ 40%]
+FF..                                                                     [ 66%]
+tests/dq checks/parquet_files/test_patient_sum_treatment_cost_per_facility_type.py . [ 73%]
+FF.F                                                                     [100%]
+
+=================================== FAILURES ===================================
+_________________________ test_check_data_completeness _________________________
+
+source_data =                  facility_name  visit_date  min_time_spent
+0            Anderson-Phillips  2000-01-01              33
+... Wiley  2026-11-20              15
+35718  Wilson, Meyer and Wiley  2026-11-22              31
+
+[35719 rows x 3 columns]
+target_data =            facility_name visit_date  min_time_spent
+0      Anderson-Phillips 2000-01-01              33
+1      Anderso...scobar-Kennedy 2026-11-04              28
+44668    Escobar-Kennedy 2026-11-08              35
+
+[44669 rows x 3 columns]
+data_quality_library = <src.data_quality.data_quality_validation_library.DataQualityLibrary object at 0x7b9214deef90>
+
+    @pytest.mark.parquet_data
+    @pytest.mark.facility_name_min_time_spent_per_visit_date
+    def test_check_data_completeness(source_data, target_data, data_quality_library):
+>       data_quality_library.check_data_completeness(source_data, target_data)
+
+tests/dq checks/parquet_files/test_facility_name_min_time_spent_per_visit_date.py:43: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+df_expected =                  facility_name  visit_date  min_time_spent
+0            Anderson-Phillips  2000-01-01              33
+... Wiley  2026-11-20              15
+35718  Wilson, Meyer and Wiley  2026-11-22              31
+
+[35719 rows x 3 columns]
+df_actual =            facility_name visit_date  min_time_spent
+0      Anderson-Phillips 2000-01-01              33
+1      Anderso...scobar-Kennedy 2026-11-04              28
+44668    Escobar-Kennedy 2026-11-08              35
+
+[44669 rows x 3 columns]
+
+    @staticmethod
+    def check_data_completeness(df_expected: pd.DataFrame, df_actual: pd.DataFrame):
+        """
+        Full data set comparison, row order ignored, duplicates respected.
+        Fails on column set mismatch or any row present on one side only.
+        """
+        expected_cols, actual_cols = set(df_expected.columns), set(df_actual.columns)
+        assert expected_cols == actual_cols, (
+            "Column set mismatch.\n"
+            f"Missing in target: {sorted(expected_cols - actual_cols)}\n"
+            f"Unexpected in target: {sorted(actual_cols - expected_cols)}"
+        )
+    
+        columns = sorted(expected_cols)
+        expected = DataQualityLibrary._normalize(df_expected[columns])
+        actual = DataQualityLibrary._normalize(df_actual[columns])
+    
+        # Number each occurrence of identical rows so duplicates are compared as well.
+        key = "__occurrence__"
+        expected[key] = expected.groupby(columns, dropna=False).cumcount()
+        actual[key] = actual.groupby(columns, dropna=False).cumcount()
+    
+        merged = expected.merge(actual, on=columns + [key], how="outer", indicator=True)
+        only_expected = merged[merged["_merge"] == "left_only"][columns]
+        only_actual = merged[merged["_merge"] == "right_only"][columns]
+    
+        if only_expected.empty and only_actual.empty:
+            return
+    
+        message = [
+            "Data completeness check failed: source (expected) and target (actual) differ.",
+            f"Expected rows: {len(df_expected)}, actual rows: {len(df_actual)}",
+            f"Rows missing in target (present only in source): {len(only_expected)}",
+            f"Rows unexpected in target (present only in target): {len(only_actual)}",
+        ]
+        if not only_expected.empty:
+            message += ["", "--- Missing in target ---",
+                        DataQualityLibrary._to_text(only_expected.sort_values(columns))]
+        if not only_actual.empty:
+            message += ["", "--- Unexpected in target ---",
+                        DataQualityLibrary._to_text(only_actual.sort_values(columns))]
+>       raise AssertionError("\n".join(message))
+E       AssertionError: Data completeness check failed: source (expected) and target (actual) differ.
+E       Expected rows: 35719, actual rows: 44669
+E       Rows missing in target (present only in source): 0
+E       Rows unexpected in target (present only in target): 8950
+E       
+E       --- Unexpected in target ---
+E         facility_name min_time_spent visit_date
+E       Escobar-Kennedy           15.0 2000-02-11
+E       Escobar-Kennedy           15.0 2000-04-06
+E       Escobar-Kennedy           15.0 2000-04-20
+E       Escobar-Kennedy           15.0 2000-04-24
+E       Escobar-Kennedy           15.0 2000-04-29
+E       Escobar-Kennedy           15.0 2000-06-02
+E       Escobar-Kennedy           15.0 2000-06-08
+E       Escobar-Kennedy           15.0 2000-06-30
+E       Escobar-Kennedy           15.0 2000-07-21
+E       Escobar-Kennedy           15.0 2000-08-03
+E       Escobar-Kennedy           15.0 2000-08-15
+E       Escobar-Kennedy           15.0 2000-09-10
+E       Escobar-Kennedy           15.0 2000-11-06
+E       Escobar-Kennedy           15.0 2000-12-04
+E       Escobar-Kennedy           15.0 2000-12-26
+E       Escobar-Kennedy           15.0 2001-01-13
+E       Escobar-Kennedy           15.0 2001-01-19
+E       Escobar-Kennedy           15.0 2001-01-30
+E       Escobar-Kennedy           15.0 2001-02-08
+E       Escobar-Kennedy           15.0 2001-03-06
+E       ... (8930 more rows)
+
+src/data_quality/data_quality_validation_library.py:111: AssertionError
+_______________________________ test_check_count _______________________________
+
+source_data =                  facility_name  visit_date  min_time_spent
+0            Anderson-Phillips  2000-01-01              33
+... Wiley  2026-11-20              15
+35718  Wilson, Meyer and Wiley  2026-11-22              31
+
+[35719 rows x 3 columns]
+target_data =            facility_name visit_date  min_time_spent
+0      Anderson-Phillips 2000-01-01              33
+1      Anderso...scobar-Kennedy 2026-11-04              28
+44668    Escobar-Kennedy 2026-11-08              35
+
+[44669 rows x 3 columns]
+data_quality_library = <src.data_quality.data_quality_validation_library.DataQualityLibrary object at 0x7b9214deef90>
+
+    @pytest.mark.parquet_data
+    @pytest.mark.facility_name_min_time_spent_per_visit_date
+    def test_check_count(source_data, target_data, data_quality_library):
+>       data_quality_library.check_count(source_data, target_data)
+
+tests/dq checks/parquet_files/test_facility_name_min_time_spent_per_visit_date.py:49: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+df_expected =                  facility_name  visit_date  min_time_spent
+0            Anderson-Phillips  2000-01-01              33
+... Wiley  2026-11-20              15
+35718  Wilson, Meyer and Wiley  2026-11-22              31
+
+[35719 rows x 3 columns]
+df_actual =            facility_name visit_date  min_time_spent
+0      Anderson-Phillips 2000-01-01              33
+1      Anderso...scobar-Kennedy 2026-11-04              28
+44668    Escobar-Kennedy 2026-11-08              35
+
+[44669 rows x 3 columns]
+
+    @staticmethod
+    def check_count(df_expected: pd.DataFrame, df_actual: pd.DataFrame):
+        expected, actual = len(df_expected), len(df_actual)
+>       assert expected == actual, (
+               ^^^^^^^^^^^^^^^^^^
+            f"Row count mismatch: expected (source) = {expected}, actual (target) = {actual}, "
+            f"difference = {actual - expected:+d}"
+        )
+E       AssertionError: Row count mismatch: expected (source) = 35719, actual (target) = 44669, difference = +8950
+
+src/data_quality/data_quality_validation_library.py:65: AssertionError
+____________________________ test_check_uniqueness _____________________________
+
+target_data =            facility_name visit_date  min_time_spent
+0      Anderson-Phillips 2000-01-01              33
+1      Anderso...scobar-Kennedy 2026-11-04              28
+44668    Escobar-Kennedy 2026-11-08              35
+
+[44669 rows x 3 columns]
+data_quality_library = <src.data_quality.data_quality_validation_library.DataQualityLibrary object at 0x7b9214deef90>
+
+    @pytest.mark.parquet_data
+    @pytest.mark.facility_name_min_time_spent_per_visit_date
+    def test_check_uniqueness(target_data, data_quality_library):
+>       data_quality_library.check_duplicates(target_data, ['facility_name', 'visit_date'])
+
+tests/dq checks/parquet_files/test_facility_name_min_time_spent_per_visit_date.py:55: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+df =            facility_name visit_date  min_time_spent
+0      Anderson-Phillips 2000-01-01              33
+1      Anderso...scobar-Kennedy 2026-11-04              28
+44668    Escobar-Kennedy 2026-11-08              35
+
+[44669 rows x 3 columns]
+column_names = ['facility_name', 'visit_date']
+
+    @staticmethod
+    def check_duplicates(df: pd.DataFrame, column_names=None):
+        subset = list(column_names) if column_names else list(df.columns)
+        missing = [c for c in subset if c not in df.columns]
+        assert not missing, f"Columns not found for duplicate check: {missing}"
+    
+        duplicated = df[df.duplicated(subset=subset, keep=False)]
+        if duplicated.empty:
+            return
+        groups = (duplicated.groupby(subset, dropna=False).size()
+                  .reset_index(name="occurrences").sort_values("occurrences", ascending=False))
+>       raise AssertionError(
+            f"Found {len(groups)} duplicated key(s) ({len(duplicated)} rows) on columns {subset}.\n"
+            + DataQualityLibrary._to_text(groups)
+        )
+E       AssertionError: Found 8950 duplicated key(s) (17900 rows) on columns ['facility_name', 'visit_date'].
+E         facility_name visit_date  occurrences
+E       Escobar-Kennedy 2000-01-01            2
+E       Escobar-Kennedy 2000-01-02            2
+E       Escobar-Kennedy 2000-01-03            2
+E       Escobar-Kennedy 2000-01-04            2
+E       Escobar-Kennedy 2000-01-07            2
+E       Escobar-Kennedy 2000-01-08            2
+E       Escobar-Kennedy 2000-01-09            2
+E       Escobar-Kennedy 2000-01-10            2
+E       Escobar-Kennedy 2000-01-11            2
+E       Escobar-Kennedy 2000-01-12            2
+E       Escobar-Kennedy 2000-01-13            2
+E       Escobar-Kennedy 2000-01-14            2
+E       Escobar-Kennedy 2000-01-15            2
+E       Escobar-Kennedy 2000-01-16            2
+E       Escobar-Kennedy 2000-01-17            2
+E       Escobar-Kennedy 2000-01-18            2
+E       Escobar-Kennedy 2000-01-19            2
+E       Escobar-Kennedy 2000-01-20            2
+E       Escobar-Kennedy 2000-01-21            2
+E       Escobar-Kennedy 2000-01-22            2
+E       ... (8930 more rows)
+
+src/data_quality/data_quality_validation_library.py:127: AssertionError
+_________________________ test_check_data_completeness _________________________
+
+source_data =       facility_type  visit_date avg_time_spent
+0            Clinic  2000-01-01          26.00
+1            Clinic  200...35717   Urgent Care  2026-11-22          48.00
+35718   Urgent Care  2026-11-23          30.00
+
+[35719 rows x 3 columns]
+target_data =           facility_type visit_date  avg_time_spent
+0                Clinic 2000-11-27           21.00
+1               ...         Clinic 2026-11-12           25.50
+25933  Specialty Center 2026-11-09           34.25
+
+[25934 rows x 3 columns]
+data_quality_library = <src.data_quality.data_quality_validation_library.DataQualityLibrary object at 0x7b9214deef90>
+
+    @pytest.mark.parquet_data
+    @pytest.mark.facility_type_avg_time_spent_per_visit_date
+    def test_check_data_completeness(source_data, target_data, data_quality_library):
+>       data_quality_library.check_data_completeness(source_data, target_data)
+
+tests/dq checks/parquet_files/test_facility_type_avg_time_spent_per_visit_date.py:43: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+df_expected =       facility_type  visit_date avg_time_spent
+0            Clinic  2000-01-01          26.00
+1            Clinic  200...35717   Urgent Care  2026-11-22          48.00
+35718   Urgent Care  2026-11-23          30.00
+
+[35719 rows x 3 columns]
+df_actual =           facility_type visit_date  avg_time_spent
+0                Clinic 2000-11-27           21.00
+1               ...         Clinic 2026-11-12           25.50
+25933  Specialty Center 2026-11-09           34.25
+
+[25934 rows x 3 columns]
+
+    @staticmethod
+    def check_data_completeness(df_expected: pd.DataFrame, df_actual: pd.DataFrame):
+        """
+        Full data set comparison, row order ignored, duplicates respected.
+        Fails on column set mismatch or any row present on one side only.
+        """
+        expected_cols, actual_cols = set(df_expected.columns), set(df_actual.columns)
+        assert expected_cols == actual_cols, (
+            "Column set mismatch.\n"
+            f"Missing in target: {sorted(expected_cols - actual_cols)}\n"
+            f"Unexpected in target: {sorted(actual_cols - expected_cols)}"
+        )
+    
+        columns = sorted(expected_cols)
+        expected = DataQualityLibrary._normalize(df_expected[columns])
+        actual = DataQualityLibrary._normalize(df_actual[columns])
+    
+        # Number each occurrence of identical rows so duplicates are compared as well.
+        key = "__occurrence__"
+        expected[key] = expected.groupby(columns, dropna=False).cumcount()
+        actual[key] = actual.groupby(columns, dropna=False).cumcount()
+    
+        merged = expected.merge(actual, on=columns + [key], how="outer", indicator=True)
+        only_expected = merged[merged["_merge"] == "left_only"][columns]
+        only_actual = merged[merged["_merge"] == "right_only"][columns]
+    
+        if only_expected.empty and only_actual.empty:
+            return
+    
+        message = [
+            "Data completeness check failed: source (expected) and target (actual) differ.",
+            f"Expected rows: {len(df_expected)}, actual rows: {len(df_actual)}",
+            f"Rows missing in target (present only in source): {len(only_expected)}",
+            f"Rows unexpected in target (present only in target): {len(only_actual)}",
+        ]
+        if not only_expected.empty:
+            message += ["", "--- Missing in target ---",
+                        DataQualityLibrary._to_text(only_expected.sort_values(columns))]
+        if not only_actual.empty:
+            message += ["", "--- Unexpected in target ---",
+                        DataQualityLibrary._to_text(only_actual.sort_values(columns))]
+>       raise AssertionError("\n".join(message))
+E       AssertionError: Data completeness check failed: source (expected) and target (actual) differ.
+E       Expected rows: 35719, actual rows: 25934
+E       Rows missing in target (present only in source): 9785
+E       Rows unexpected in target (present only in target): 0
+E       
+E       --- Missing in target ---
+E       avg_time_spent    facility_type visit_date
+E                 15.0           Clinic 2000-02-11
+E                 15.0           Clinic 2000-08-03
+E                 15.0           Clinic 2000-08-15
+E                 15.0           Clinic 2000-09-10
+E                 15.0         Hospital 2000-03-24
+E                 15.0 Specialty Center 2000-01-20
+E                 15.0 Specialty Center 2000-02-23
+E                 15.0 Specialty Center 2000-03-28
+E                 15.0 Specialty Center 2000-04-26
+E                 15.0 Specialty Center 2000-08-12
+E                 15.0      Urgent Care 2000-01-08
+E                 15.0      Urgent Care 2000-06-02
+E                 15.0      Urgent Care 2001-07-10
+E                 15.0      Urgent Care 2001-10-09
+E                 15.0      Urgent Care 2002-02-23
+E                 15.0      Urgent Care 2002-08-13
+E                 15.0      Urgent Care 2002-11-18
+E                 15.0      Urgent Care 2004-01-10
+E                 15.0      Urgent Care 2005-08-12
+E                 15.0      Urgent Care 2005-10-30
+E       ... (9765 more rows)
+
+src/data_quality/data_quality_validation_library.py:111: AssertionError
+_______________________________ test_check_count _______________________________
+
+source_data =       facility_type  visit_date avg_time_spent
+0            Clinic  2000-01-01          26.00
+1            Clinic  200...35717   Urgent Care  2026-11-22          48.00
+35718   Urgent Care  2026-11-23          30.00
+
+[35719 rows x 3 columns]
+target_data =           facility_type visit_date  avg_time_spent
+0                Clinic 2000-11-27           21.00
+1               ...         Clinic 2026-11-12           25.50
+25933  Specialty Center 2026-11-09           34.25
+
+[25934 rows x 3 columns]
+data_quality_library = <src.data_quality.data_quality_validation_library.DataQualityLibrary object at 0x7b9214deef90>
+
+    @pytest.mark.parquet_data
+    @pytest.mark.facility_type_avg_time_spent_per_visit_date
+    def test_check_count(source_data, target_data, data_quality_library):
+>       data_quality_library.check_count(source_data, target_data)
+
+tests/dq checks/parquet_files/test_facility_type_avg_time_spent_per_visit_date.py:49: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+df_expected =       facility_type  visit_date avg_time_spent
+0            Clinic  2000-01-01          26.00
+1            Clinic  200...35717   Urgent Care  2026-11-22          48.00
+35718   Urgent Care  2026-11-23          30.00
+
+[35719 rows x 3 columns]
+df_actual =           facility_type visit_date  avg_time_spent
+0                Clinic 2000-11-27           21.00
+1               ...         Clinic 2026-11-12           25.50
+25933  Specialty Center 2026-11-09           34.25
+
+[25934 rows x 3 columns]
+
+    @staticmethod
+    def check_count(df_expected: pd.DataFrame, df_actual: pd.DataFrame):
+        expected, actual = len(df_expected), len(df_actual)
+>       assert expected == actual, (
+               ^^^^^^^^^^^^^^^^^^
+            f"Row count mismatch: expected (source) = {expected}, actual (target) = {actual}, "
+            f"difference = {actual - expected:+d}"
+        )
+E       AssertionError: Row count mismatch: expected (source) = 35719, actual (target) = 25934, difference = -9785
+
+src/data_quality/data_quality_validation_library.py:65: AssertionError
+_________________________ test_check_data_completeness _________________________
+
+source_data =     facility_type          full_name sum_treatment_cost
+0          Clinic     Alicia Mendoza         1768089.94
+1     ...e         Susan Ross         1810862.44
+119   Urgent Care       William Holt         1974435.28
+
+[120 rows x 3 columns]
+target_data =    facility_type          full_name  sum_treatment_cost
+0         Clinic         April Cook         -1847678.98
+1     ...e       Susan Bishop          1699864.40
+63   Urgent Care                NaN         26414290.07
+
+[64 rows x 3 columns]
+data_quality_library = <src.data_quality.data_quality_validation_library.DataQualityLibrary object at 0x7b9214deef90>
+
+    @pytest.mark.parquet_data
+    @pytest.mark.patient_sum_treatment_cost_per_facility_type
+    def test_check_data_completeness(source_data, target_data, data_quality_library):
+>       data_quality_library.check_data_completeness(source_data, target_data)
+
+tests/dq checks/parquet_files/test_patient_sum_treatment_cost_per_facility_type.py:44: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+df_expected =     facility_type          full_name sum_treatment_cost
+0          Clinic     Alicia Mendoza         1768089.94
+1     ...e         Susan Ross         1810862.44
+119   Urgent Care       William Holt         1974435.28
+
+[120 rows x 3 columns]
+df_actual =    facility_type          full_name  sum_treatment_cost
+0         Clinic         April Cook         -1847678.98
+1     ...e       Susan Bishop          1699864.40
+63   Urgent Care                NaN         26414290.07
+
+[64 rows x 3 columns]
+
+    @staticmethod
+    def check_data_completeness(df_expected: pd.DataFrame, df_actual: pd.DataFrame):
+        """
+        Full data set comparison, row order ignored, duplicates respected.
+        Fails on column set mismatch or any row present on one side only.
+        """
+        expected_cols, actual_cols = set(df_expected.columns), set(df_actual.columns)
+        assert expected_cols == actual_cols, (
+            "Column set mismatch.\n"
+            f"Missing in target: {sorted(expected_cols - actual_cols)}\n"
+            f"Unexpected in target: {sorted(actual_cols - expected_cols)}"
+        )
+    
+        columns = sorted(expected_cols)
+        expected = DataQualityLibrary._normalize(df_expected[columns])
+        actual = DataQualityLibrary._normalize(df_actual[columns])
+    
+        # Number each occurrence of identical rows so duplicates are compared as well.
+        key = "__occurrence__"
+        expected[key] = expected.groupby(columns, dropna=False).cumcount()
+        actual[key] = actual.groupby(columns, dropna=False).cumcount()
+    
+        merged = expected.merge(actual, on=columns + [key], how="outer", indicator=True)
+        only_expected = merged[merged["_merge"] == "left_only"][columns]
+        only_actual = merged[merged["_merge"] == "right_only"][columns]
+    
+        if only_expected.empty and only_actual.empty:
+            return
+    
+        message = [
+            "Data completeness check failed: source (expected) and target (actual) differ.",
+            f"Expected rows: {len(df_expected)}, actual rows: {len(df_actual)}",
+            f"Rows missing in target (present only in source): {len(only_expected)}",
+            f"Rows unexpected in target (present only in target): {len(only_actual)}",
+        ]
+        if not only_expected.empty:
+            message += ["", "--- Missing in target ---",
+                        DataQualityLibrary._to_text(only_expected.sort_values(columns))]
+        if not only_actual.empty:
+            message += ["", "--- Unexpected in target ---",
+                        DataQualityLibrary._to_text(only_actual.sort_values(columns))]
+>       raise AssertionError("\n".join(message))
+E       AssertionError: Data completeness check failed: source (expected) and target (actual) differ.
+E       Expected rows: 120, actual rows: 64
+E       Rows missing in target (present only in source): 75
+E       Rows unexpected in target (present only in target): 19
+E       
+E       --- Missing in target ---
+E       facility_type         full_name sum_treatment_cost
+E              Clinic    Alicia Mendoza         1768089.94
+E              Clinic        April Cook         1847678.98
+E              Clinic    Brianna Briggs         1684872.83
+E              Clinic    Casey Mitchell         1736770.11
+E              Clinic Christopher Perez         1716868.86
+E              Clinic Christopher Smith         1894314.24
+E              Clinic       Colin Smith         1854436.49
+E              Clinic   Danielle Miller         1891011.93
+E              Clinic       Dennis Nash         1802575.27
+E              Clinic     Edward Brooks         1775185.81
+E              Clinic      Janet Newton         1702287.38
+E              Clinic       Jason Petty         1712052.76
+E              Clinic    Jason Villegas         1766377.48
+E              Clinic   Katherine Arias         1733096.94
+E              Clinic         Kevin Roy         1729502.08
+E              Clinic   Kimberly Harris         1662224.68
+E              Clinic    Kristin Holmes         1662418.54
+E              Clinic   Manuel Morrison         1662451.27
+E              Clinic   Melissa Johnson         1771061.77
+E              Clinic   Michael Maxwell         1714818.95
+E       ... (55 more rows)
+E       
+E       --- Unexpected in target ---
+E          facility_type         full_name sum_treatment_cost
+E                 Clinic        April Cook        -1847678.98
+E                 Clinic    Casey Mitchell        -1736770.11
+E                 Clinic Christopher Smith        -1894314.24
+E                 Clinic       Colin Smith        -1854436.49
+E                 Clinic       Dennis Nash        -1802575.27
+E                 Clinic      Janet Newton        -1702287.38
+E                 Clinic       Jason Petty        -1712052.76
+E                 Clinic         Kevin Roy        -1729502.08
+E                 Clinic    Kristin Holmes        -1662418.54
+E                 Clinic   Manuel Morrison        -1662451.27
+E                 Clinic   Michael Maxwell        -1714818.95
+E                 Clinic     Patricia Cruz        -1778569.48
+E                 Clinic      Sandra Stein        -1819149.37
+E                 Clinic     Steven Cherry        -1670063.39
+E                 Clinic      Susan Bishop        -1740367.18
+E                 Clinic               NaN       -26506414.79
+E               Hospital               NaN        26249144.76
+E       Specialty Center               NaN        26481237.95
+E            Urgent Care               NaN        26414290.07
+
+src/data_quality/data_quality_validation_library.py:111: AssertionError
+_______________________________ test_check_count _______________________________
+
+source_data =     facility_type          full_name sum_treatment_cost
+0          Clinic     Alicia Mendoza         1768089.94
+1     ...e         Susan Ross         1810862.44
+119   Urgent Care       William Holt         1974435.28
+
+[120 rows x 3 columns]
+target_data =    facility_type          full_name  sum_treatment_cost
+0         Clinic         April Cook         -1847678.98
+1     ...e       Susan Bishop          1699864.40
+63   Urgent Care                NaN         26414290.07
+
+[64 rows x 3 columns]
+data_quality_library = <src.data_quality.data_quality_validation_library.DataQualityLibrary object at 0x7b9214deef90>
+
+    @pytest.mark.parquet_data
+    @pytest.mark.patient_sum_treatment_cost_per_facility_type
+    def test_check_count(source_data, target_data, data_quality_library):
+>       data_quality_library.check_count(source_data, target_data)
+
+tests/dq checks/parquet_files/test_patient_sum_treatment_cost_per_facility_type.py:50: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+df_expected =     facility_type          full_name sum_treatment_cost
+0          Clinic     Alicia Mendoza         1768089.94
+1     ...e         Susan Ross         1810862.44
+119   Urgent Care       William Holt         1974435.28
+
+[120 rows x 3 columns]
+df_actual =    facility_type          full_name  sum_treatment_cost
+0         Clinic         April Cook         -1847678.98
+1     ...e       Susan Bishop          1699864.40
+63   Urgent Care                NaN         26414290.07
+
+[64 rows x 3 columns]
+
+    @staticmethod
+    def check_count(df_expected: pd.DataFrame, df_actual: pd.DataFrame):
+        expected, actual = len(df_expected), len(df_actual)
+>       assert expected == actual, (
+               ^^^^^^^^^^^^^^^^^^
+            f"Row count mismatch: expected (source) = {expected}, actual (target) = {actual}, "
+            f"difference = {actual - expected:+d}"
+        )
+E       AssertionError: Row count mismatch: expected (source) = 120, actual (target) = 64, difference = -56
+
+src/data_quality/data_quality_validation_library.py:65: AssertionError
+__________________________ test_check_not_null_values __________________________
+
+target_data =    facility_type          full_name  sum_treatment_cost
+0         Clinic         April Cook         -1847678.98
+1     ...e       Susan Bishop          1699864.40
+63   Urgent Care                NaN         26414290.07
+
+[64 rows x 3 columns]
+data_quality_library = <src.data_quality.data_quality_validation_library.DataQualityLibrary object at 0x7b9214deef90>
+
+    @pytest.mark.parquet_data
+    @pytest.mark.patient_sum_treatment_cost_per_facility_type
+    def test_check_not_null_values(target_data, data_quality_library):
+>       data_quality_library.check_not_null_values(target_data, ['facility_type', 'full_name', 'sum_treatment_cost'])
+
+tests/dq checks/parquet_files/test_patient_sum_treatment_cost_per_facility_type.py:62: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+df =    facility_type          full_name  sum_treatment_cost
+0         Clinic         April Cook         -1847678.98
+1     ...e       Susan Bishop          1699864.40
+63   Urgent Care                NaN         26414290.07
+
+[64 rows x 3 columns]
+column_names = ['facility_type', 'full_name', 'sum_treatment_cost']
+
+    @staticmethod
+    def check_not_null_values(df: pd.DataFrame, column_names=None):
+        columns = list(column_names) if column_names else list(df.columns)
+        missing = [c for c in columns if c not in df.columns]
+        assert not missing, f"Columns not found for not-null check: {missing}. Available: {list(df.columns)}"
+    
+        null_counts = {c: int(df[c].isna().sum()) for c in columns}
+        failed = {c: n for c, n in null_counts.items() if n > 0}
+        if not failed:
+            return
+        sample = df[df[list(failed)].isna().any(axis=1)]
+>       raise AssertionError(
+            f"Null values found (column: null count): {failed} out of {len(df)} rows.\n"
+            + DataQualityLibrary._to_text(sample)
+        )
+E       AssertionError: Null values found (column: null count): {'full_name': 4} out of 64 rows.
+E          facility_type full_name  sum_treatment_cost
+E                 Clinic       NaN        -26506414.79
+E               Hospital       NaN         26249144.76
+E       Specialty Center       NaN         26481237.95
+E            Urgent Care       NaN         26414290.07
+
+src/data_quality/data_quality_validation_library.py:143: AssertionError
+- Generated html report: file:///var/jenkins_home/workspace/dq_tests/PyTest%20DQ%20Framework/html_report/report.html -
+=========================== short test summary info ============================
+FAILED tests/dq checks/parquet_files/test_facility_name_min_time_spent_per_visit_date.py::test_check_data_completeness - AssertionError: Data completeness check failed: source (expected) and target (actual) differ.
+Expected rows: 35719, actual rows: 44669
+Rows missing in target (present only in source): 0
+Rows unexpected in target (present only in target): 8950
+
+--- Unexpected in target ---
+  facility_name min_time_spent visit_date
+Escobar-Kennedy           15.0 2000-02-11
+Escobar-Kennedy           15.0 2000-04-06
+Escobar-Kennedy           15.0 2000-04-20
+Escobar-Kennedy           15.0 2000-04-24
+Escobar-Kennedy           15.0 2000-04-29
+Escobar-Kennedy           15.0 2000-06-02
+Escobar-Kennedy           15.0 2000-06-08
+Escobar-Kennedy           15.0 2000-06-30
+Escobar-Kennedy           15.0 2000-07-21
+Escobar-Kennedy           15.0 2000-08-03
+Escobar-Kennedy           15.0 2000-08-15
+Escobar-Kennedy           15.0 2000-09-10
+Escobar-Kennedy           15.0 2000-11-06
+Escobar-Kennedy           15.0 2000-12-04
+Escobar-Kennedy           15.0 2000-12-26
+Escobar-Kennedy           15.0 2001-01-13
+Escobar-Kennedy           15.0 2001-01-19
+Escobar-Kennedy           15.0 2001-01-30
+Escobar-Kennedy           15.0 2001-02-08
+Escobar-Kennedy           15.0 2001-03-06
+... (8930 more rows)
+FAILED tests/dq checks/parquet_files/test_facility_name_min_time_spent_per_visit_date.py::test_check_count - AssertionError: Row count mismatch: expected (source) = 35719, actual (target) = 44669, difference = +8950
+FAILED tests/dq checks/parquet_files/test_facility_name_min_time_spent_per_visit_date.py::test_check_uniqueness - AssertionError: Found 8950 duplicated key(s) (17900 rows) on columns ['facility_name', 'visit_date'].
+  facility_name visit_date  occurrences
+Escobar-Kennedy 2000-01-01            2
+Escobar-Kennedy 2000-01-02            2
+Escobar-Kennedy 2000-01-03            2
+Escobar-Kennedy 2000-01-04            2
+Escobar-Kennedy 2000-01-07            2
+Escobar-Kennedy 2000-01-08            2
+Escobar-Kennedy 2000-01-09            2
+Escobar-Kennedy 2000-01-10            2
+Escobar-Kennedy 2000-01-11            2
+Escobar-Kennedy 2000-01-12            2
+Escobar-Kennedy 2000-01-13            2
+Escobar-Kennedy 2000-01-14            2
+Escobar-Kennedy 2000-01-15            2
+Escobar-Kennedy 2000-01-16            2
+Escobar-Kennedy 2000-01-17            2
+Escobar-Kennedy 2000-01-18            2
+Escobar-Kennedy 2000-01-19            2
+Escobar-Kennedy 2000-01-20            2
+Escobar-Kennedy 2000-01-21            2
+Escobar-Kennedy 2000-01-22            2
+... (8930 more rows)
+FAILED tests/dq checks/parquet_files/test_facility_type_avg_time_spent_per_visit_date.py::test_check_data_completeness - AssertionError: Data completeness check failed: source (expected) and target (actual) differ.
+Expected rows: 35719, actual rows: 25934
+Rows missing in target (present only in source): 9785
+Rows unexpected in target (present only in target): 0
+
+--- Missing in target ---
+avg_time_spent    facility_type visit_date
+          15.0           Clinic 2000-02-11
+          15.0           Clinic 2000-08-03
+          15.0           Clinic 2000-08-15
+          15.0           Clinic 2000-09-10
+          15.0         Hospital 2000-03-24
+          15.0 Specialty Center 2000-01-20
+          15.0 Specialty Center 2000-02-23
+          15.0 Specialty Center 2000-03-28
+          15.0 Specialty Center 2000-04-26
+          15.0 Specialty Center 2000-08-12
+          15.0      Urgent Care 2000-01-08
+          15.0      Urgent Care 2000-06-02
+          15.0      Urgent Care 2001-07-10
+          15.0      Urgent Care 2001-10-09
+          15.0      Urgent Care 2002-02-23
+          15.0      Urgent Care 2002-08-13
+          15.0      Urgent Care 2002-11-18
+          15.0      Urgent Care 2004-01-10
+          15.0      Urgent Care 2005-08-12
+          15.0      Urgent Care 2005-10-30
+... (9765 more rows)
+FAILED tests/dq checks/parquet_files/test_facility_type_avg_time_spent_per_visit_date.py::test_check_count - AssertionError: Row count mismatch: expected (source) = 35719, actual (target) = 25934, difference = -9785
+FAILED tests/dq checks/parquet_files/test_patient_sum_treatment_cost_per_facility_type.py::test_check_data_completeness - AssertionError: Data completeness check failed: source (expected) and target (actual) differ.
+Expected rows: 120, actual rows: 64
+Rows missing in target (present only in source): 75
+Rows unexpected in target (present only in target): 19
+
+--- Missing in target ---
+facility_type         full_name sum_treatment_cost
+       Clinic    Alicia Mendoza         1768089.94
+       Clinic        April Cook         1847678.98
+       Clinic    Brianna Briggs         1684872.83
+       Clinic    Casey Mitchell         1736770.11
+       Clinic Christopher Perez         1716868.86
+       Clinic Christopher Smith         1894314.24
+       Clinic       Colin Smith         1854436.49
+       Clinic   Danielle Miller         1891011.93
+       Clinic       Dennis Nash         1802575.27
+       Clinic     Edward Brooks         1775185.81
+       Clinic      Janet Newton         1702287.38
+       Clinic       Jason Petty         1712052.76
+       Clinic    Jason Villegas         1766377.48
+       Clinic   Katherine Arias         1733096.94
+       Clinic         Kevin Roy         1729502.08
+       Clinic   Kimberly Harris         1662224.68
+       Clinic    Kristin Holmes         1662418.54
+       Clinic   Manuel Morrison         1662451.27
+       Clinic   Melissa Johnson         1771061.77
+       Clinic   Michael Maxwell         1714818.95
+... (55 more rows)
+
+--- Unexpected in target ---
+   facility_type         full_name sum_treatment_cost
+          Clinic        April Cook        -1847678.98
+          Clinic    Casey Mitchell        -1736770.11
+          Clinic Christopher Smith        -1894314.24
+          Clinic       Colin Smith        -1854436.49
+          Clinic       Dennis Nash        -1802575.27
+          Clinic      Janet Newton        -1702287.38
+          Clinic       Jason Petty        -1712052.76
+          Clinic         Kevin Roy        -1729502.08
+          Clinic    Kristin Holmes        -1662418.54
+          Clinic   Manuel Morrison        -1662451.27
+          Clinic   Michael Maxwell        -1714818.95
+          Clinic     Patricia Cruz        -1778569.48
+          Clinic      Sandra Stein        -1819149.37
+          Clinic     Steven Cherry        -1670063.39
+          Clinic      Susan Bishop        -1740367.18
+          Clinic               NaN       -26506414.79
+        Hospital               NaN        26249144.76
+Specialty Center               NaN        26481237.95
+     Urgent Care               NaN        26414290.07
+FAILED tests/dq checks/parquet_files/test_patient_sum_treatment_cost_per_facility_type.py::test_check_count - AssertionError: Row count mismatch: expected (source) = 120, actual (target) = 64, difference = -56
+FAILED tests/dq checks/parquet_files/test_patient_sum_treatment_cost_per_facility_type.py::test_check_not_null_values - AssertionError: Null values found (column: null count): {'full_name': 4} out of 64 rows.
+   facility_type full_name  sum_treatment_cost
+          Clinic       NaN        -26506414.79
+        Hospital       NaN         26249144.76
+Specialty Center       NaN         26481237.95
+     Urgent Care       NaN         26414290.07
+================== 8 failed, 7 passed, 5 deselected in 1.57s ===================
+[Pipeline] }
+ERROR: script returned exit code 1
+Setting overall build result to UNSTABLE
+[Pipeline] // catchError
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Archive Test Report)
+[Pipeline] archiveArtifacts
+Archiving artifacts
+[Pipeline] publishHTML
+[htmlpublisher] Archiving HTML reports...
+[htmlpublisher] Archiving at BUILD level /var/jenkins_home/workspace/dq_tests/PyTest DQ Framework/html_report to HTML_20Test_20Report
+[htmlpublisher] Copying recursive using current thread
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] echo
+DQ pipeline execution completed.
+[Pipeline] echo
+DQ checks failed - see HTML Test Report for details.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: UNSTABLE
