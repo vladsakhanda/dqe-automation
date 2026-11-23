@@ -1,0 +1,86 @@
+// Dedicated pipeline for PyTest DQ checks (separate from data_dev).
+// Job type: "Pipeline script from SCM", Script Path: "PyTest DQ Framework/Jenkinsfile".
+// Required: Jenkins credential (Username with password) id 'jenkins-postgres-credentials',
+//           plugins: Pipeline, Git, Credentials Binding, HTML Publisher.
+pipeline {
+    agent any
+
+    environment {
+        POSTGRES_SECRET = credentials('jenkins-postgres-credentials')
+        FRAMEWORK_DIR   = 'PyTest DQ Framework'
+    }
+
+    stages {
+        stage('Install System Packages') {
+            steps {
+                sh '''
+                    apt-get update
+                    apt-get install -y python3 python3-pip python3-venv
+                '''
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                dir("${FRAMEWORK_DIR}") {
+                    sh '''
+                        python3 -m venv venv
+                        . venv/bin/activate
+                        pip install --upgrade pip
+                        pip install -r requirements.txt
+                    '''
+                }
+            }
+        }
+
+        stage('Run DQ Tests') {
+            steps {
+                dir("${FRAMEWORK_DIR}") {
+                    // Failed checks mark the build UNSTABLE but still let the report be archived.
+                    catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
+                        sh '''
+                            . venv/bin/activate
+                            rm -rf html_report
+                            pytest tests -m "parquet_data" \
+                                --db_host="postgres" \
+                                --db_port="5432" \
+                                --db_name="mydatabase" \
+                                --db_user="$POSTGRES_SECRET_USR" \
+                                --db_password="$POSTGRES_SECRET_PSW" \
+                                --html=html_report/report.html
+                        '''
+                    }
+                }
+            }
+        }
+
+        stage('Archive Test Report') {
+            steps {
+                // Archive the entire html_report directory, including assets
+                archiveArtifacts artifacts: 'PyTest DQ Framework/html_report/**', allowEmptyArchive: true
+
+                // Publish the HTML report
+                publishHTML(target: [
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: true,
+                    keepAll: true,
+                    reportDir: 'PyTest DQ Framework/html_report',
+                    reportFiles: 'report.html',
+                    reportName: 'HTML Test Report'
+                ])
+            }
+        }
+    }
+
+    post {
+        always {
+            echo 'DQ pipeline execution completed.'
+        }
+        unstable {
+            echo 'DQ checks failed - see HTML Test Report for details.'
+        }
+        failure {
+            echo 'DQ pipeline failed. Please check the logs for details.'
+        }
+    }
+}
