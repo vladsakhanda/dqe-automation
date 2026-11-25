@@ -1,1 +1,4 @@
-results
+results/
+parquet_data/
+__pycache__/
+*.pyc
